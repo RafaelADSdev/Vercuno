@@ -71,6 +71,14 @@ O contato público abre o WhatsApp com uma mensagem sobre o serviço ou projeto.
 
 Para ativar a persistência, aplique as [migrações do Supabase](supabase/migrations) em ordem e configure a URL e a chave. As migrações ativam RLS e retiram o acesso à tabela dos papéis `anon` e `authenticated`. Mantenha a chave apenas no servidor, fora das variáveis `NEXT_PUBLIC_`.
 
+### Deploy na VPS AWS
+
+A VPS acompanha a branch `main` de [RafaelADSdev/Vercuno](https://github.com/RafaelADSdev/Vercuno). Para publicar um commit dessa branch, rode `git push origin main` com esse repositório configurado como `origin`.
+
+O temporizador do systemd procura atualizações cerca de uma vez por minuto. O site continua no ar durante o build. A VPS roda os testes, valida o novo container e restaura a imagem anterior se a troca falhar.
+
+Os arquivos do serviço estão em [`deploy/aws/`](deploy/aws). Na VPS, acompanhe as execuções com `sudo journalctl -u vercuno-deploy.service -f`.
+
 ## Onde editar
 
 | Conteúdo | Arquivo |

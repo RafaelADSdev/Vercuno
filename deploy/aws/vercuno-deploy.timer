@@ -1,0 +1,10 @@
+[Unit]
+Description=Check Vercuno main for updates every minute
+
+[Timer]
+OnActiveSec=15s
+OnUnitInactiveSec=60s
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target
