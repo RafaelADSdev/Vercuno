@@ -4,11 +4,26 @@ import Image from "next/image";
 import { ChevronsLeftRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 
+type ComparisonImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+type BeforeAfterProps = {
+  client: string;
+  brand: string;
+  siteHost?: string;
+  desktop: { after: ComparisonImage; before: ComparisonImage };
+  mobile?: { after: ComparisonImage; before?: ComparisonImage };
+};
+
 const clamp = (value: number) => Math.min(Math.max(value, 0), 100);
 const ease = (t: number) => 1 - Math.pow(1 - t, 3);
-const JUMP_DURATION = 360;
+const JUMP_DURATION = 260;
 
-export function CaseCompare() {
+export function BeforeAfter({ client, brand, siteHost, desktop, mobile }: BeforeAfterProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const [split, setSplit] = useState(50);
   const [touched, setTouched] = useState(false);
@@ -172,7 +187,7 @@ export function CaseCompare() {
           markTouched();
           commit(Number(event.target.value));
         }}
-        aria-label="Comparar o site anterior com o site entregue pela Tekton"
+        aria-label={`Comparar as versões do site de ${client}`}
         aria-valuetext={`${rounded}% site anterior, ${100 - rounded}% site novo`}
       />
 
@@ -181,32 +196,29 @@ export function CaseCompare() {
           <i />
           <i />
           <i />
-          <span>nauticaengenharia.com</span>
+          {siteHost && <span>{siteHost}</span>}
         </div>
         <div className="compare-view" {...pointerHandlers}>
           <Image
-            src="/assets/cases/nautica-after-desktop.webp"
-            alt="Site novo da Náutica Engenharia em desktop, entregue pela Tekton"
-            width={1440}
-            height={900}
-            loading="lazy"
-            sizes="(max-width: 900px) 100vw, 72vw"
+            {...desktop.after}
+            alt={desktop.after.alt}
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 820px) 92vw, (max-width: 1560px) 76vw, 1176px"
           />
           <div className="compare-before">
             <Image
-              src="/assets/cases/nautica-before-desktop.webp"
-              alt="Site anterior da Náutica Engenharia em desktop"
-              width={1440}
-              height={900}
+              {...desktop.before}
+              alt={desktop.before.alt}
               loading="lazy"
-              sizes="(max-width: 900px) 100vw, 72vw"
+              sizes="(max-width: 820px) 92vw, (max-width: 1560px) 76vw, 1176px"
             />
           </div>
           <span className="compare-tag is-before" aria-hidden="true">
             <i /> Site anterior
           </span>
           <span className="compare-tag is-after" aria-hidden="true">
-            <i /> Entrega Tekton
+            <i /> Entrega {brand}
           </span>
           <span className="compare-divider" aria-hidden="true" />
           <span className="compare-handle" aria-hidden="true">
@@ -233,32 +245,32 @@ export function CaseCompare() {
         </p>
       </div>
 
-      <div className="case-mobile">
-        <div className="case-mobile-label">ADAPTAÇÃO MOBILE</div>
-        <div className="compare-view" {...pointerHandlers}>
-          <Image
-            src="/assets/cases/nautica-after-mobile.webp"
-            alt="Site novo da Náutica Engenharia em celular"
-            width={390}
-            height={844}
-            loading="lazy"
-            sizes="(max-width: 700px) 34vw, 18vw"
-          />
-          <div className="compare-before">
+      {mobile && (
+        <div className="case-mobile">
+          <div className="case-mobile-label">VERSÃO PARA CELULAR</div>
+          <div className={mobile.before ? "compare-view" : undefined} {...(mobile.before ? pointerHandlers : {})}>
             <Image
-              src="/assets/cases/nautica-before-mobile.webp"
-              alt="Site anterior da Náutica Engenharia em celular"
-              width={390}
-              height={844}
+              {...mobile.after}
+              alt={mobile.after.alt}
               loading="lazy"
-              sizes="(max-width: 700px) 34vw, 18vw"
+              sizes="(max-width: 820px) 24vw, (max-width: 1560px) 19vw, 302px"
             />
+            {mobile.before && (
+              <>
+                <div className="compare-before">
+                  <Image
+                    {...mobile.before}
+                    alt={mobile.before.alt}
+                    loading="lazy"
+                    sizes="(max-width: 820px) 24vw, (max-width: 1560px) 19vw, 302px"
+                  />
+                </div>
+                <span className="compare-divider" aria-hidden="true" />
+              </>
+            )}
           </div>
-          <span className="compare-divider" aria-hidden="true" />
         </div>
-      </div>
-
-      <span className="case-stamp" aria-hidden="true">PROJETO REAL</span>
+      )}
     </div>
   );
 }

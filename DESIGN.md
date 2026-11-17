@@ -1,5 +1,5 @@
 ---
-name: "Tekton Labs"
+name: "Vercuno"
 description: "Uma mesa de execução digital que transforma rigor, prova real e decisão em uma linguagem visual premium."
 colors:
   mineral-black: "#141414"
@@ -18,34 +18,34 @@ colors:
   action-ink: "#ffffff"
 typography:
   display:
-    fontFamily: "Plus Jakarta Sans, Arial, sans-serif"
+    fontFamily: "Rethink Sans, Arial, sans-serif"
     fontSize: "clamp(2.9rem, 4.85vw, 5.75rem)"
     fontWeight: 700
     lineHeight: 0.98
     letterSpacing: "-0.045em"
   headline:
-    fontFamily: "Plus Jakarta Sans, Arial, sans-serif"
+    fontFamily: "Rethink Sans, Arial, sans-serif"
     fontSize: "clamp(2.25rem, 4.7vw, 5.2rem)"
     fontWeight: 690
     lineHeight: 1.02
     letterSpacing: "-0.04em"
   title:
-    fontFamily: "Plus Jakarta Sans, Arial, sans-serif"
+    fontFamily: "Rethink Sans, Arial, sans-serif"
     fontSize: "clamp(1.8rem, 3vw, 3rem)"
     fontWeight: 650
     letterSpacing: "-0.035em"
   body:
-    fontFamily: "Inter, Arial, sans-serif"
+    fontFamily: "Rethink Sans, Arial, sans-serif"
     fontSize: "1rem"
     lineHeight: 1.6
   label:
-    fontFamily: "Inter, Arial, sans-serif"
+    fontFamily: "Rethink Sans, Arial, sans-serif"
     fontSize: "0.58rem"
     fontWeight: 750
     lineHeight: 1.35
     letterSpacing: "0.13em"
   action:
-    fontFamily: "Inter, Arial, sans-serif"
+    fontFamily: "Rethink Sans, Arial, sans-serif"
     fontSize: "0.86rem"
     fontWeight: 800
 rounded:
@@ -102,13 +102,13 @@ components:
     padding: "clamp(1.5rem, 3vw, 2.5rem)"
 ---
 
-# Design System: Tekton Labs
+# Design System da Vercuno
 
 ## Overview
 
 **Creative North Star: "Mesa de Execução Digital"**
 
-A Tekton parece uma bancada onde decisões digitais são examinadas, marcadas e aprovadas. O preto mineral cria silêncio; folhas de grafite, réguas finas, índices funcionais e anotações violetas dão precisão operacional. Fotografias e capturas reais entram como evidência material, com enquadramento cuidadoso e sem enfeite que concorra com o trabalho.
+A Vercuno usa superfícies grafite, réguas finas e anotações violetas para organizar o conteúdo. Fotografias e capturas reais entram como evidência do trabalho.
 
 O sistema combina densidade editorial com controles que lembram comandos de aprovação. A expressão é premium porque cada contraste tem função: tipografia grande estabelece direção, texto menor documenta, linhas organizam e o violeta confirma ação, progresso ou foco. Movimento é breve e responsivo, sempre complementar a um conteúdo que já permanece legível sem JavaScript.
 
@@ -117,7 +117,8 @@ O sistema combina densidade editorial com controles que lembram comandos de apro
 - Fundo mineral contínuo com folhas de grafite e uma superfície clara reservada a provas.
 - Réguas de um pixel, grandes índices funcionais e pequenas legendas em caixa alta.
 - Violeta usado como anotação, progresso, foco e decisão.
-- Plus Jakarta Sans para direção; Inter para leitura e operação.
+- Rethink Sans variável em títulos, textos e controles.
+- Assinatura horizontal cinza e roxa no cabeçalho e no rodapé. Símbolo isolado para o favicon.
 - Fotografias e interfaces reais enquadradas como artefatos de trabalho.
 - Controles compactos, firmes e imediatamente acionáveis.
 
@@ -154,11 +155,7 @@ A paleta parte de três cores base — Nox Noir `#141414`, Royal Amethyst `#7E49
 
 ## Typography
 
-**Display Font:** Plus Jakarta Sans (com Arial e sans-serif como fallback)  
-**Body Font:** Inter (com Arial e sans-serif como fallback)  
-**Label/Mono Font:** Inter; o aspecto técnico vem de tamanho, peso, espaçamento e caixa alta, não de uma fonte monoespaçada.
-
-**Character:** Plus Jakarta Sans dá autoridade geométrica a títulos e números, enquanto Inter mantém textos e controles diretos. A diferença de escala é proposital: direção grande, documentação compacta e leitura calma.
+A Rethink Sans variável, com pesos de 400 a 800, atende títulos, textos, legendas e controles. Os arquivos WOFF2 são servidos pelo site, com Arial como alternativa. A hierarquia vem da escala, do peso e do espaçamento.
 
 ### Hierarchy
 
@@ -245,7 +242,7 @@ Os componentes parecem instrumentos de uma mesa de aprovação: compactos, contr
 
 ### Section Index
 
-Um número grande em Plus Jakarta Sans encosta em uma legenda pequena, espaçada e em caixa alta. O índice orienta a leitura e oferece uma assinatura reutilizável sem virar ornamento solto.
+Um número grande em Rethink Sans encosta em uma legenda pequena, espaçada e em caixa alta. O índice orienta a leitura.
 
 ### Evidence Board
 
@@ -305,7 +302,7 @@ Validação local deste refinamento: TypeScript sem emissão aprovado; contraste
 
 ## Composição editorial — design-taste-frontend-v1
 
-Aplicação da skill ao projeto existente: variância 8, densidade 4 e movimento ajustado à direção sutil já aprovada. As regras genéricas de troca de paleta, fontes e biblioteca de ícones foram adaptadas à identidade existente da Tekton; Royal Amethyst, Plus Jakarta Sans, Inter e os ícones atuais permanecem. A luz do mouse solicitada na seção de contato é preservada.
+Nesta revisão de composição, o movimento acompanha a leitura e o foco. A seção de contato usa um realce discreto que acompanha o ponteiro.
 
 - Abertura assimétrica com título levemente menor e conteúdo alinhado a um limite de 1400px em telas largas.
 - Serviços numerados e separados por réguas, com título, descrição, entregas e ação em colunas próprias no desktop. A ação muda de linha em larguras intermediárias.

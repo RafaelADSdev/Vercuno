@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade",
-  description: "Como a Tekton Labs trata os dados enviados pelo formulário de contato.",
+  description: `Como a ${siteConfig.name} trata os dados enviados pelo formulário de contato.`,
+  alternates: { canonical: "/privacidade" },
 };
 
 export default function PrivacyPage() {
   return (
     <main className="legal-page">
-      <a className="legal-back" href="/">
+      <Link className="legal-back" href="/" prefetch={false}>
         <ArrowLeft size={17} aria-hidden="true" /> Voltar para o site
-      </a>
+      </Link>
       <article>
         <p className="section-label">Documento legal</p>
         <h1>Política de Privacidade</h1>
@@ -32,7 +35,7 @@ export default function PrivacyPage() {
         <h2>Armazenamento e acesso</h2>
         <p>
           Quando a integração estiver ativa, os dados serão armazenados em infraestrutura Supabase com acesso
-          restrito à equipe autorizada da Tekton. Os registros não ficam disponíveis publicamente pelo site.
+          restrito à equipe autorizada da {siteConfig.name}. Os registros não ficam disponíveis publicamente pelo site.
         </p>
 
         <h2>Compartilhamento e retenção</h2>

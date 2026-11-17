@@ -1,110 +1,86 @@
-# Tekton Labs
+# Vercuno
 
-Site institucional da [Tekton Labs](https://github.com/Tekton-DigitalBR/tekton-digital-site): uma página que apresenta a oferta, mostra trabalho real e abre conversa no WhatsApp. O visitante compara fornecedores no celular e precisa entender, em poucos segundos, o que a casa entrega e com quem vai falar.
+![Capa da Vercuno com a marca em branco e violeta sobre fundo grafite](public/assets/brand/vercuno-cover.png)
 
-A página cobre três frentes — landing pages, sites institucionais e sistemas web — com o case da Náutica Engenharia, a evidência técnica desta própria página e os três sócios que executam o projeto.
+**Landing pages, sites institucionais e sistemas web.** O site da Vercuno apresenta os serviços, mostra o que foi entregue em cada projeto e abre uma conversa direta pelo WhatsApp.
 
-## Stack
+[Projetos](#projetos) · [Desenvolvimento](#desenvolvimento) · [Configuração](#configuração) · [Onde editar](#onde-editar)
 
-| Camada | Uso |
-| --- | --- |
-| Next.js 16 (App Router) | Páginas, metadados, sitemap e a rota `/api/leads` |
-| React 19 e TypeScript | Interface |
-| Tailwind CSS 4 | Estilo em `src/app/globals.css` |
-| Supabase | Persistência de leads, só no servidor |
-| Zod | Validação do payload de contato |
-| Vitest | Testes do schema de lead |
+## Projetos
 
-Fontes: Plus Jakarta Sans nos títulos e Inter no texto. Idioma da interface: `pt-BR`.
+| Landing page | Site institucional | Sistema web |
+| --- | --- | --- |
+| ![Página de serviços da Náutica Engenharia](public/assets/cases/nautica-after-desktop.webp) | ![Página de apresentação do estúdio Suzzy Alves Fotografia](public/assets/cases/suzzy-desktop.webp) | ![Visão geral do painel financeiro do Prumo](public/assets/cases/prumo-desktop.webp) |
 
-## Rodar localmente
+O catálogo em `/portfolio` reúne cinco casos. Ao trocar de serviço, os cards entram e saem com transições curtas e se reposicionam na grade. A troca por teclado ou com movimento reduzido é imediata. O case da Náutica traz um comparador antes e depois com capturas reais em desktop e mobile.
 
-Requisitos: Node.js 20.9 ou superior e npm.
+| Projeto | Entrega | Página |
+| --- | --- | --- |
+| **Náutica Engenharia** | Landing page de serviços de engenharia com solicitação de orçamento pelo WhatsApp. | `/portfolio/nautica-engenharia` |
+| **Caio Leonardi** | Site de psicologia clínica com informações sobre atendimento online e agendamento. | `/portfolio/caio-leonardi` |
+| **Suzzy Alves Fotografia** | Site do estúdio com galeria de ensaios e agendamento pelo WhatsApp. | `/portfolio/suzzy-alves-fotografia` |
+| **Zelo** | Painel de atendimento pelo WhatsApp com catálogo, assistente de IA e revisão de campanhas. | `/portfolio/zelo` |
+| **Prumo** | Sistema financeiro para acompanhar recebimentos, pagamentos, serviços e despesas recorrentes. | `/portfolio/prumo` |
+
+As capturas do Zelo e do Prumo usam dados fictícios. A procedência das imagens, fontes e demais ativos está registrada no repositório. [Origem dos ativos](public/assets/ASSET_SOURCES.md)
+
+## Desenvolvimento
+
+Use Node.js 22 LTS (22.12 ou superior) ou Node.js 24 LTS, com npm. No diretório do projeto, instale as dependências do lockfile e inicie o servidor.
 
 ```bash
-npm install
-copy .env.example .env.local
+npm ci
 npm run dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000).
+O catálogo, as páginas de serviço e a política de privacidade funcionam sem configuração do Supabase. [Abrir em localhost:3000](http://localhost:3000)
 
-O site sobe sem Supabase. O canal de contato da página é o WhatsApp, e o número padrão já está em `src/data/site.ts`.
-
-## Onde mexer
-
-| Quer mudar | Arquivo |
+| Comando | O que faz |
 | --- | --- |
-| Textos, serviços, sócios, WhatsApp e notas técnicas | `src/data/site.ts` |
-| Composição da home | `src/app/page.tsx` |
-| Cabeçalho | `src/components/Header.tsx` |
-| Comparativo antes/depois do case | `src/components/CaseCompare.tsx` |
-| Visual | `src/app/globals.css` |
-| Título, descrição e Open Graph | `src/app/layout.tsx` |
-| Política de privacidade | `src/app/privacidade/page.tsx` |
-| Capturas, retratos e logo | `public/assets/` |
+| `npm run dev` | Inicia o servidor de desenvolvimento com recarga automática. |
+| `npm run typecheck` | Verifica os tipos com TypeScript. |
+| `npm test` | Executa os testes do schema de leads com Vitest. |
+| `npm run build` | Gera o build de produção e pré-renderiza as páginas de serviços e cases. |
+| `npm start` | Serve o build de produção localmente. |
 
-A origem das imagens está em `public/assets/ASSET_SOURCES.md`. Não substitua retrato ou case por material genérico.
+O site usa **Next.js 16 com App Router**, **React 19** e **TypeScript**. A interface combina Tailwind CSS 4, CSS Modules e a fonte Rethink Sans hospedada no próprio projeto. O cadastro de serviços e cases alimenta as páginas, os metadados e o sitemap. O App Router também serve o `robots.txt` e as imagens de compartilhamento.
 
-## Rotas
-
-| Caminho | Função |
+| Rota | O que você encontra |
 | --- | --- |
-| `/` | Home: oferta, serviços, portfólio, evidência técnica, sócios e contato |
-| `/privacidade` | Política de privacidade |
-| `/api/leads` | `POST` que valida e grava um lead |
-| `/sitemap.xml` | Sitemap |
-| `/robots.txt` | Robots |
-| `/opengraph-image` | Imagem de compartilhamento, 1200×630 |
+| `/` | Serviços, projetos em destaque, equipe e contato. |
+| `/servicos/<servico>` | Escopo, opções de contratação e projetos relacionados. Slugs `landing-pages`, `sites-institucionais` e `sistemas-web`. |
+| `/portfolio` e `/portfolio/<projeto>` | Catálogo por serviço e detalhes de cada entrega. |
+| `/privacidade` | Política de privacidade. |
+| `POST /api/leads` | Validação e registro de leads no Supabase. |
 
-Âncoras da home: `#servicos`, `#portfolio`, `#equipe`, `#contato`.
+## Configuração
 
-## Variáveis de ambiente
+Para personalizar o ambiente, copie [`.env.example`](.env.example) para `.env.local`. Na Vercel, configure essas variáveis no projeto. O arquivo [`vercel.json`](vercel.json) declara o framework Next.js.
 
-Copie `.env.example` para `.env.local`. Nada disso vai para o Git.
+| Variável | Quando usar |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Define o domínio canônico usado em metadados e sitemap. Em branco, usa o domínio de produção informado pela Vercel, quando disponível. Informe a URL ao publicar em outra plataforma. |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Substitui o número comercial padrão. Use somente dígitos, com país e DDD. |
+| `NEXT_PUBLIC_GOOGLE_BUSINESS_PROFILE_URL` | Adicione ao ambiente se quiser vincular o perfil do Google ao carrossel, quando houver avaliações cadastradas. |
+| `SUPABASE_URL` | URL do projeto Supabase, necessária para persistir leads. |
+| `SUPABASE_SECRET_KEY` | Chave secreta usada no servidor. `SUPABASE_SERVICE_ROLE_KEY` é aceita como alternativa para projetos antigos. |
 
-| Variável | Obrigatória | Efeito |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Na publicação | Origem canônica de metadados, sitemap e dados estruturados. Sem barra no fim. |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Não | Dígitos com país e DDD, por exemplo `5581999999999`. Se ficar vazia, vale o número em `src/data/site.ts`. |
-| `SUPABASE_URL` | Só para gravar leads | URL do projeto Supabase. |
-| `SUPABASE_SECRET_KEY` | Só para gravar leads | Chave secreta, lida apenas em `src/lib/supabase-admin.ts`. |
-| `SUPABASE_SERVICE_ROLE_KEY` | Não | Fallback para projetos Supabase antigos. Prefira `SUPABASE_SECRET_KEY`. |
+### Contato e leads
 
-Chave secreta nunca usa prefixo `NEXT_PUBLIC_`. Sem as credenciais do Supabase, `POST /api/leads` responde indisponível e não finge que gravou.
+O contato público abre o WhatsApp com uma mensagem sobre o serviço ou projeto. A rota `POST /api/leads` está disponível para uma integração de formulário. Ela valida os dados com Zod e grava em `public.leads` pelo servidor. Com um payload válido e sem credenciais, a rota responde com status `503`.
 
-## Contato
+Para ativar a persistência, aplique as [migrações do Supabase](supabase/migrations) em ordem e configure a URL e a chave. As migrações ativam RLS e retiram o acesso à tabela dos papéis `anon` e `authenticated`. Mantenha a chave apenas no servidor, fora das variáveis `NEXT_PUBLIC_`.
 
-A home não tem formulário. Cada serviço e o bloco final abrem o WhatsApp com uma mensagem já escrita. O componente `src/components/LeadForm.tsx` e a rota `/api/leads` continuam no repositório para uma captação futura; hoje não estão ligados à página.
+## Onde editar
 
-A rota, quando usada, exige JSON, recusa corpo acima de 12 KB, limita 5 envios a cada 10 minutos por IP e ignora o campo-isca `website`. O registro entra em `public.leads` com `source = site-tektonlabs`.
+| Conteúdo | Arquivo |
+| --- | --- |
+| Serviços, textos, sócios e WhatsApp | [`src/data/site.ts`](src/data/site.ts) |
+| Cases, categorias e capturas | [`src/lib/cases.ts`](src/lib/cases.ts) · [Guia para cadastrar um case](PORTFOLIO.md) |
+| Avaliações | [`src/data/reviews.ts`](src/data/reviews.ts) |
+| Filtros e transições do catálogo | [`src/components/CaseFilter.tsx`](src/components/CaseFilter.tsx) |
+| Estilos globais e identidade visual | [`src/app/globals.css`](src/app/globals.css) · [Design da Vercuno](DESIGN.md) |
+| Composição e metadados das páginas | [`src/app/`](src/app) |
+| Validação e gravação de leads | [`src/lib/lead-schema.ts`](src/lib/lead-schema.ts) · [`src/app/api/leads/route.ts`](src/app/api/leads/route.ts) |
 
-## Banco
-
-`supabase/migrations` cria `public.leads`, liga RLS e revoga leitura e escrita dos papéis `anon` e `authenticated`. A escrita fica só no servidor.
-
-Aplique as migrações pela CLI do Supabase, na ordem dos arquivos:
-
-1. `20260919003136_create_leads.sql`
-2. `20260920210000_rename_lead_source.sql`
-
-Depois, confira três coisas: um `POST` autenticado pela chave secreta grava a linha, a chave pública não lê nem escreve a tabela, e o painel mostra o registro completo.
-
-## Scripts
-
-```bash
-npm run dev        # http://localhost:3000
-npm run typecheck  # tsc --noEmit
-npm test           # schema de lead
-npm run build      # build de produção
-npm start          # serve o build
-```
-
-`vercel.json` declara o framework Next.js para o deploy.
-
-## Antes de publicar
-
-- Defina `NEXT_PUBLIC_SITE_URL` com o domínio oficial.
-- Confirme o número de WhatsApp que deve aparecer nos botões.
-- Revise `/privacidade`: o texto ainda descreve coleta por formulário e precisa do contato do controlador.
-- Rode o PageSpeed na URL publicada. A auditoria local não substitui o ambiente final.
+Antes de configurar o domínio público, confirme o WhatsApp comercial e atualize os dados do controlador na [política de privacidade](src/app/privacidade/page.tsx).

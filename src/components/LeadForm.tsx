@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Check, LoaderCircle } from "lucide-react";
+import { siteConfig } from "@/data/site";
 
 type FormState = { status: "idle" | "sending" | "success" | "error"; message: string };
 
@@ -30,7 +31,7 @@ export function LeadForm() {
       form.reset();
       setState({
         status: "success",
-        message: "Mensagem recebida. A equipe da Tekton retornará assim que possível.",
+        message: `Mensagem recebida. A equipe da ${siteConfig.name} retornará assim que possível.`,
       });
     } catch (error) {
       setState({

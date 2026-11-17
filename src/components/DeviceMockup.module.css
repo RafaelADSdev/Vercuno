@@ -1,0 +1,69 @@
+.devices {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.devices > :only-child {
+  grid-column: 1 / -1;
+}
+
+.devices figure {
+  margin: 0;
+}
+
+.frame,
+.phone {
+  overflow: hidden;
+  background: var(--ink);
+  border: 1px solid rgb(20 20 20 / 18%);
+  box-shadow: 0 24px 48px rgb(20 20 20 / 14%);
+}
+
+.frame {
+  border-radius: .8rem;
+}
+
+.frame :global(.browser-bar) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.devices img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mobile {
+  width: clamp(9rem, 23vw, 16rem);
+}
+
+.phone {
+  padding: .45rem;
+  border-radius: 1.4rem;
+}
+
+.phone img {
+  border-radius: 1rem;
+}
+
+.devices figcaption {
+  max-width: 56ch;
+  margin-top: .85rem;
+  color: #454545;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .devices {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mobile {
+    width: min(13rem, 100%);
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-09-18T21:53:05.7351215-03:00",
-  "title": "Design System: Tekton Labs",
+  "title": "Design System da Vercuno",
   "extensions": {
     "colorMeta": {
       "mineral-black": {
@@ -148,8 +148,8 @@
       "kind": "nav",
       "refersTo": "text-link",
       "description": "Navegação mineral fixa com marca, links medidos e sublinhado violeta responsivo.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Navegação de demonstração\"><a class=\"ds-nav-brand\" href=\"#\"><b>T</b><span>TEKTON LABS</span></a><div class=\"ds-nav-links\"><a href=\"#\">SERVIÇOS</a><a href=\"#\">MÉTODO</a><a href=\"#\">EVIDÊNCIAS</a></div></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; min-height: 4.75rem; padding: 0 1.25rem; border-bottom: 1px solid var(--line, rgba(207, 207, 207,0.13)); background: rgba(20, 20, 20,0.88); color: var(--paper, #cfcfcf); font-family: var(--font-body), Arial, sans-serif; backdrop-filter: blur(18px); gap: 2rem; } .ds-nav-brand { display: inline-flex; align-items: center; color: inherit; font-family: var(--font-display), Arial, sans-serif; font-size: 0.76rem; font-weight: 760; letter-spacing: 0.13em; text-decoration: none; gap: 0.8rem; } .ds-nav-brand b { display: inline-grid; place-items: center; width: 2rem; aspect-ratio: 1; border-radius: 0.4rem; background: var(--violet, #7e49b3); color: var(--ink, #141414); font-size: 1rem; font-weight: 800; letter-spacing: -0.04em; } .ds-nav-links { display: flex; gap: 2rem; } .ds-nav-links a { position: relative; color: var(--muted-strong, #b4b4b4); font-size: 0.78rem; font-weight: 600; text-decoration: none; } .ds-nav-links a::after { position: absolute; bottom: -0.55rem; left: 0; width: 100%; height: 1px; background: var(--violet, #7e49b3); content: ''; transform: scaleX(0); transform-origin: right; transition: transform 180ms ease; } .ds-nav-links a:hover::after, .ds-nav-links a:focus-visible::after { transform: scaleX(1); transform-origin: left; } .ds-nav a:focus-visible { outline: 2px solid var(--violet-pale, #be96e0); outline-offset: 4px; }"
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navegação de demonstração\"><a class=\"ds-nav-brand\" href=\"#\"><img src=\"/assets/brand/vercuno.svg\" width=\"527\" height=\"103\" alt=\"Vercuno\" /></a><div class=\"ds-nav-links\"><a href=\"#\">SERVIÇOS</a><a href=\"#\">MÉTODO</a><a href=\"#\">EVIDÊNCIAS</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; min-height: 4.75rem; padding: 0 1.25rem; border-bottom: 1px solid var(--line, rgba(207, 207, 207,0.13)); background: rgba(20, 20, 20,0.88); color: var(--paper, #cfcfcf); font-family: var(--font-body), Arial, sans-serif; backdrop-filter: blur(18px); gap: 2rem; } .ds-nav-brand { display: inline-flex; align-items: center; } .ds-nav-brand img { width: auto; height: 1.85rem; } .ds-nav-links { display: flex; gap: 2rem; } .ds-nav-links a { position: relative; color: var(--muted-strong, #b4b4b4); font-size: 0.78rem; font-weight: 600; text-decoration: none; } .ds-nav-links a::after { position: absolute; bottom: -0.55rem; left: 0; width: 100%; height: 1px; background: var(--violet, #7e49b3); content: ''; transform: scaleX(0); transform-origin: right; transition: transform 180ms ease; } .ds-nav-links a:hover::after, .ds-nav-links a:focus-visible::after { transform: scaleX(1); transform-origin: left; } .ds-nav a:focus-visible { outline: 2px solid var(--violet-pale, #be96e0); outline-offset: 4px; }"
     },
     {
       "name": "Approval Stamp",
@@ -157,14 +157,14 @@
       "refersTo": "approval-stamp",
       "description": "Carimbo angular para marcar uma evidência confirmada ou um artefato real.",
       "html": "<span class=\"ds-approval-stamp\">PROJETO REAL</span>",
-      "css": ".ds-approval-stamp { display: inline-block; padding: 0.65rem 0.9rem; border: 1px solid var(--violet-deep, #5c3483); background: transparent; color: var(--violet-deep, #5c3483); font-family: var(--font-body), Arial, sans-serif; font-size: 0.58rem; font-weight: 850; letter-spacing: 0.14em; transform: rotate(-5deg); } .ds-approval-stamp:hover { background: rgba(92, 52, 131,0.06); } .ds-approval-stamp:focus-visible { outline: 2px solid var(--violet-deep, #5c3483); outline-offset: 4px; }"
+      "css": ".ds-approval-stamp { display: inline-block; padding: 0.65rem 0.9rem; border: 1px solid var(--violet-deep, #5c3483); background: transparent; color: var(--violet-deep, #5c3483); font-family: var(--font-body), Arial, sans-serif; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.14em; transform: rotate(-5deg); } .ds-approval-stamp:hover { background: rgba(92, 52, 131,0.06); } .ds-approval-stamp:focus-visible { outline: 2px solid var(--violet-deep, #5c3483); outline-offset: 4px; }"
     },
     {
       "name": "Section Index",
       "kind": "custom",
       "refersTo": "section-index",
       "description": "Índice funcional que une numeral amplo e legenda técnica compacta.",
-      "html": "<p class=\"ds-section-index\"><strong>03</strong><span>MÉTODO<br/>TEKTON</span></p>",
+      "html": "<p class=\"ds-section-index\"><strong>03</strong><span>MÉTODO<br/>VERCUNO</span></p>",
       "css": ".ds-section-index { display: flex; align-items: flex-end; margin: 0; font-family: var(--font-body), Arial, sans-serif; gap: 0.75rem; } .ds-section-index strong { color: var(--violet, #7e49b3); font-family: var(--font-display), Arial, sans-serif; font-size: clamp(2.6rem, 4.8vw, 4.75rem); font-weight: 720; letter-spacing: -0.05em; line-height: 0.76; } .ds-section-index span { max-width: 8rem; padding-bottom: 0.05rem; color: var(--muted-strong, #b4b4b4); font-size: 0.58rem; font-weight: 750; letter-spacing: 0.13em; line-height: 1.35; text-transform: uppercase; }"
     },
     {
@@ -181,7 +181,7 @@
       "refersTo": "metric-tile",
       "description": "Bloco violeta de evidência quantitativa com numeral dominante e metadado técnico.",
       "html": "<article class=\"ds-metric-tile\"><span>AUDITORIA MOBILE / LOCAL</span><strong>96</strong><p>Performance</p></article>",
-      "css": ".ds-metric-tile { display: flex; align-items: flex-start; flex-direction: column; justify-content: space-between; min-height: 20rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--violet, #7e49b3); color: var(--ink, #141414); font-family: var(--font-body), Arial, sans-serif; } .ds-metric-tile > span { font-size: 0.55rem; font-weight: 850; letter-spacing: 0.13em; } .ds-metric-tile strong { font-family: var(--font-display), Arial, sans-serif; font-size: clamp(6rem, 11vw, 10.5rem); font-weight: 760; letter-spacing: -0.07em; line-height: 0.75; } .ds-metric-tile p { margin: 0; font-family: var(--font-display), Arial, sans-serif; font-size: 1rem; font-weight: 750; } .ds-metric-tile:focus-visible { outline: 2px solid var(--violet-pale, #be96e0); outline-offset: 4px; }"
+      "css": ".ds-metric-tile { display: flex; align-items: flex-start; flex-direction: column; justify-content: space-between; min-height: 20rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--violet, #7e49b3); color: var(--ink, #141414); font-family: var(--font-body), Arial, sans-serif; } .ds-metric-tile > span { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.13em; } .ds-metric-tile strong { font-family: var(--font-display), Arial, sans-serif; font-size: clamp(6rem, 11vw, 10.5rem); font-weight: 760; letter-spacing: -0.07em; line-height: 0.75; } .ds-metric-tile p { margin: 0; font-family: var(--font-display), Arial, sans-serif; font-size: 1rem; font-weight: 750; } .ds-metric-tile:focus-visible { outline: 2px solid var(--violet-pale, #be96e0); outline-offset: 4px; }"
     },
     {
       "name": "Progress Ruler",
@@ -194,12 +194,12 @@
   ],
   "narrative": {
     "northStar": "Mesa de Execução Digital",
-    "overview": "A Tekton parece uma bancada onde decisões digitais são examinadas, marcadas e aprovadas. O preto mineral cria silêncio; folhas de grafite, réguas finas, índices funcionais e anotações violetas dão precisão operacional. Fotografias e capturas reais entram como evidência material, com enquadramento cuidadoso e sem enfeite que concorra com o trabalho.\n\nO sistema combina densidade editorial com controles que lembram comandos de aprovação. A expressão é premium porque cada contraste tem função: tipografia grande estabelece direção, texto menor documenta, linhas organizam e o violeta confirma ação, progresso ou foco. Movimento é breve e responsivo, sempre complementar a um conteúdo que já permanece legível sem JavaScript.",
+    "overview": "A Vercuno usa superfícies grafite, réguas finas e anotações violetas para organizar o conteúdo. Fotografias e capturas reais entram como evidência do trabalho.\n\nO sistema combina densidade editorial com controles que lembram comandos de aprovação. A expressão é premium porque cada contraste tem função: tipografia grande estabelece direção, texto menor documenta, linhas organizam e o violeta confirma ação, progresso ou foco. Movimento é breve e responsivo, sempre complementar a um conteúdo que já permanece legível sem JavaScript.",
     "keyCharacteristics": [
       "Fundo mineral contínuo com folhas de grafite e uma superfície clara reservada a provas.",
       "Réguas de um pixel, grandes índices funcionais e pequenas legendas em caixa alta.",
       "Violeta usado como anotação, progresso, foco e decisão.",
-      "Plus Jakarta Sans para direção; Inter para leitura e operação.",
+      "Rethink Sans variável em títulos, textos e controles.",
       "Fotografias e interfaces reais enquadradas como artefatos de trabalho.",
       "Controles compactos, firmes e imediatamente acionáveis."
     ],

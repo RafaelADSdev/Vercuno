@@ -2,23 +2,29 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { siteConfig } from "@/data/site";
+import { siteConfig, whatsappHref } from "@/data/site";
 
-export function Header() {
+export function Header({ section = "home" }: { section?: "home" | "portfolio" }) {
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const menuPanel = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const sections = [...siteConfig.nav.map((item) => item.href), "#contato"]
-      .map((href) => document.querySelector<HTMLElement>(href))
+    if (section !== "home") return;
+    const sections = [...siteConfig.nav.map((item) => item.href), "#portfolio"]
+      .filter((href) => href.startsWith("#"))
+      .map((href) => document.getElementById(href.slice(1)))
       .filter((section): section is HTMLElement => section !== null);
     let frame = 0;
     const updateSection = () => {
       const readingLine = Math.max(100, window.innerHeight * 0.35);
-      const current = sections.filter((section) => section.getBoundingClientRect().top <= readingLine).at(-1);
+      const current = sections.reduce<HTMLElement | null>((selected, candidate) => {
+        const top = candidate.getBoundingClientRect().top;
+        return top <= readingLine && (!selected || top > selected.getBoundingClientRect().top) ? candidate : selected;
+      }, null);
       setActiveSection(current ? `#${current.id}` : "");
     };
     const scheduleSection = () => {
@@ -36,7 +42,7 @@ export function Header() {
       window.removeEventListener("resize", scheduleSection);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [section]);
 
   useEffect(() => {
     if (!open) return;
@@ -69,28 +75,33 @@ export function Header() {
     };
   }, [open]);
 
+  const isHome = section === "home";
+  const contactPath = isHome ? "#contato" : "/#contato";
+  const navHref = (href: string) => !isHome && href.startsWith("#") ? `/${href}` : href;
+  const navCurrent = (href: string) => {
+    if (href === "/portfolio") {
+      return section === "portfolio" ? "page" : activeSection === "#portfolio" ? "location" : undefined;
+    }
+    return isHome && activeSection === href ? "location" : undefined;
+  };
+
   return (
     <header className="site-header">
-      <a className="brand" href="#top" aria-label="Tekton Labs, ir para o topo">
-        <Image
-          src="/assets/brand/tekton-logo.png"
-          alt="Tekton Labs"
-          width={720}
-          height={194}
-          priority
-        />
-      </a>
+      <Link className="brand" href={isHome ? "#top" : "/"} prefetch={false} aria-label={`${siteConfig.name}, início`}>
+        <Image {...siteConfig.logo} alt="" loading="eager" />
+      </Link>
 
       <nav className="desktop-nav" aria-label="Navegação principal">
         {siteConfig.nav.map((item) => (
-          <a key={item.href} href={item.href} aria-current={activeSection === item.href ? "location" : undefined}>
+          <Link key={item.href} href={navHref(item.href)} prefetch={false} aria-current={navCurrent(item.href)}>
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
 
-      <a className="header-cta" href="#contato" aria-current={activeSection === "#contato" ? "location" : undefined}>
-        Falar com a equipe <ArrowUpRight size={16} aria-hidden="true" />
+      <a className="header-cta" href={whatsappHref ?? contactPath} target={whatsappHref ? "_blank" : undefined}
+        rel={whatsappHref ? "noreferrer" : undefined}>
+        {whatsappHref ? "Falar no WhatsApp" : "Falar com a equipe"} <ArrowUpRight size={16} aria-hidden="true" />
       </a>
 
       <button
@@ -114,18 +125,20 @@ export function Header() {
       >
         <nav aria-label="Navegação móvel">
           {siteConfig.nav.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
-              aria-current={activeSection === item.href ? "location" : undefined}
+              href={navHref(item.href)}
+              prefetch={false}
+              aria-current={navCurrent(item.href)}
               onClick={() => setOpen(false)}
               tabIndex={open ? 0 : -1}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
-          <a className="mobile-contact" href="#contato" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-            Falar com a equipe <ArrowUpRight aria-hidden="true" />
+          <a className="mobile-contact" href={whatsappHref ?? contactPath} onClick={() => setOpen(false)}
+            tabIndex={open ? 0 : -1} target={whatsappHref ? "_blank" : undefined} rel={whatsappHref ? "noreferrer" : undefined}>
+            {whatsappHref ? "Falar no WhatsApp" : "Falar com a equipe"} <ArrowUpRight aria-hidden="true" />
           </a>
         </nav>
       </div>

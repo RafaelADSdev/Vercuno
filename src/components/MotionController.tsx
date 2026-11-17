@@ -90,7 +90,7 @@ export function MotionController() {
 
     // Content stays visible in CSS. Only elements initially below the fold are observed.
     const targets = Array.from(document.querySelectorAll<HTMLElement>(
-      ".section-intro > *, .service-row, .case-header > *, .case-details > *, .capabilities-inner > div:first-child, .audit-board, .evidence-heading, .evidence-grid > li, .team-heading > *, .team-grid article, .contact-copy > *",
+      "#servicos header > *, #portfolio h2, .team-heading > *, .team-grid article, .contact-copy > *",
     )).filter((element) => element.getBoundingClientRect().top >= window.innerHeight);
 
     const observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {

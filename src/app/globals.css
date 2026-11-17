@@ -1,6 +1,9 @@
 @import "tailwindcss";
+@import "./fonts/rethink-sans/rethink-sans.css";
 
 :root {
+  --font-body: "Rethink Sans";
+  --font-display: var(--font-body);
   --ink: #141414;
   --surface: #1c1c1c;
   --surface-raised: #242424;
@@ -113,7 +116,7 @@ a {
 
 .brand img {
   width: auto;
-  height: 2.2rem;
+  height: 1.85rem;
 }
 
 .desktop-nav {
@@ -859,7 +862,7 @@ a {
   border: 1px solid var(--violet-deep);
   color: var(--violet-deep);
   font-size: 0.58rem;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: 0.14em;
   transform: rotate(-5deg);
 }
@@ -1275,7 +1278,7 @@ a {
 
 .audit-lead > span {
   font-size: 0.55rem;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: 0.13em;
 }
 
@@ -2133,7 +2136,7 @@ a {
 
 @media (max-width: 560px) {
   .brand img {
-    height: 1.85rem;
+    height: 1.5rem;
   }
 
   .hero {
@@ -2326,9 +2329,8 @@ a {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
   }
 
   .brand:active,
@@ -2473,16 +2475,16 @@ h3 {
   bottom: 0.35rem;
 }
 
-.desktop-nav a[aria-current="location"] {
+.desktop-nav a:is([aria-current="location"], [aria-current="page"]) {
   color: var(--paper);
 }
 
-.desktop-nav a[aria-current="location"]::after {
+.desktop-nav a:is([aria-current="location"], [aria-current="page"])::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.mobile-menu a[aria-current="location"] {
+.mobile-menu a:is([aria-current="location"], [aria-current="page"]) {
   color: var(--violet-pale);
   border-bottom-color: var(--violet);
 }
@@ -2532,6 +2534,12 @@ h3 {
 .footer-bottom {
   align-items: center;
   font-size: 0.75rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(1rem, 3vw, 2rem);
 }
 
 @media (max-width: 1100px) {

@@ -1,0 +1,57 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .8rem 1.25rem;
+  padding-block: 1rem 1.4rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+.filters button {
+  min-height: var(--control-min);
+  padding-inline: .9rem;
+  color: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: .65rem;
+  background: var(--surface);
+  font-size: .86rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.filters button:hover { border-color: var(--violet-pale); }
+.filters button[aria-pressed="true"] { color: var(--on-violet); border-color: var(--violet); background: var(--violet-deep); }
+.count { color: var(--muted-strong); margin: 0; font-size: .82rem; font-variant-numeric: tabular-nums; }
+.results {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  min-height: clamp(20rem, 29vw, 28rem);
+  overflow: clip;
+  overflow-clip-margin: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.9rem, 2.4vw, 1.8rem);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.grid > [hidden], .empty[hidden] { display: none; }
+.grid > li { min-width: 0; }
+
+.grid > .leaving[hidden], .empty.leaving[hidden] {
+  display: block;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 890px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 590px) { .grid { grid-template-columns: minmax(0, 1fr); } }

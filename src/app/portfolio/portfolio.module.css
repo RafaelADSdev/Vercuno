@@ -1,0 +1,48 @@
+.shell { padding-top: var(--header-height); }
+
+.intro { padding-block: clamp(2.65rem, 6.5vw, 5.7rem) clamp(1.7rem, 4.6vw, 3.9rem); }
+.intro h1 {
+  margin: .8rem 0 0;
+  font: 700 clamp(2.85rem, 6.55vw, 7.1rem)/.98 var(--font-display), Arial, sans-serif;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+.intro > p:last-child { margin: 1rem 0 0; max-width: 55ch; color: var(--muted-strong); text-wrap: pretty; }
+.catalog { padding-top: clamp(2.75rem, 6vw, 5.5rem); }
+.catalog h2 { margin-bottom: clamp(1.15rem, 3vw, 2rem); }
+.catalog h2, .evidence h2 { font-size: clamp(2rem, 4vw, 4.3rem); }
+
+.empty {
+  padding: clamp(1.35rem, 5vw, 3.75rem);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--violet);
+  border-radius: .65rem;
+  background: var(--surface);
+}
+.empty p { margin: 0 0 1.25rem; color: var(--muted-strong); }
+
+.availability {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  padding: clamp(1.2rem, 3.4vw, 2.65rem);
+  border: 1px solid var(--line);
+  border-radius: .7rem;
+  background: var(--surface);
+  margin-block: clamp(2rem, 5vw, 4.5rem) clamp(3.5rem, 8vw, 7rem);
+}
+.availability h2 { font-size: clamp(1.65rem, 3.3vw, 3.2rem); }
+
+.evidence { padding-block: clamp(2.5rem, 5.5vw, 4.75rem); background: var(--paper); color: var(--ink); }
+.evidenceInner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+.evidence p { margin: .75rem 0 0; color: #454545; max-width: 44ch; }
+
+.scores { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem; margin: 0; }
+.scores div { display: flex; flex-direction: column-reverse; border-top: 1px solid rgb(20 20 20 / 26%); padding-top: .7rem; }
+.scores dt { font-size: .76rem; font-weight: 700; }
+.scores dd { color: var(--violet-deep); margin: 0; font-size: clamp(1.95rem, 3.8vw, 3.8rem); font-weight: 700; line-height: 1.06; letter-spacing: -.045em; }
+
+@media (max-width: 820px) { .evidenceInner { grid-template-columns: 1fr; } }
+@media (max-width: 450px) { .scores { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; } }
