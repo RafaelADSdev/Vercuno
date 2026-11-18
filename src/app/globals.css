@@ -406,8 +406,8 @@ a {
   --arrow-y: 4px;
 }
 
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  html:not([data-motion-input="keyboard"]) :is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link):hover svg {
+@media (hover: hover) and (pointer: fine) {
+  html[data-motion="full"]:not([data-motion-input="keyboard"]) :is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link):hover svg {
     transform: translate(var(--arrow-x), var(--arrow-y));
   }
 
@@ -416,7 +416,7 @@ a {
     transition: transform 420ms var(--motion-out);
   }
 
-  html:not([data-motion-input="keyboard"]) :is(.primary-button, .service-cta):hover::before {
+  html[data-motion="full"]:not([data-motion-input="keyboard"]) :is(.primary-button, .service-cta):hover::before {
     transform: rotate(20deg) translateX(620%);
   }
 
@@ -424,7 +424,7 @@ a {
     transition: transform 220ms var(--motion-out);
   }
 
-  html:not([data-motion-input="keyboard"]) .footer-top > .arrow-link:hover::after {
+  html[data-motion="full"]:not([data-motion-input="keyboard"]) .footer-top > .arrow-link:hover::after {
     transform: scaleX(1);
   }
 }
@@ -1605,16 +1605,20 @@ a {
 /* Luz original que acompanha o mouse na seção de contato. */
 .contact-glow {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 52rem;
+  height: 52rem;
   background: radial-gradient(
-    26rem 26rem at var(--pointer-x, 50%) var(--pointer-y, 50%),
-    rgba(126, 73, 179, 0.2),
-    rgba(126, 73, 179, 0.06) 45%,
+    circle,
+    rgba(126, 73, 179, 0.28),
+    rgba(126, 73, 179, 0.09) 45%,
     transparent 70%
   );
   opacity: 0;
   pointer-events: none;
-  transition: opacity 420ms var(--motion-out);
+  transform: translate(-50%, -50%);
+  transition: opacity 520ms var(--motion-out);
 }
 
 .contact-section.is-lit .contact-glow {
@@ -1845,6 +1849,37 @@ a {
   color: var(--muted);
   font-size: 0.64rem;
 }
+
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: var(--control-min);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted-strong);
+  font: inherit;
+  font-size: .72rem;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+  cursor: pointer;
+}
+
+.motion-toggle::before {
+  width: .4rem;
+  height: .4rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+}
+
+.motion-toggle[aria-checked="true"]::before {
+  background: var(--violet-pale);
+  border-color: var(--violet-pale);
+}
+
+.motion-toggle:hover { color: var(--paper); }
 
 .footer-bottom a:hover {
   color: var(--paper);
@@ -2375,41 +2410,43 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html:not([data-motion]) {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  html:not([data-motion]) *,
+  html:not([data-motion]) *::before,
+  html:not([data-motion]) *::after {
     scroll-behavior: auto !important;
     animation: none !important;
     transition: none !important;
   }
-
-  .brand:active,
-  .desktop-nav a:active,
-  .header-cta:active,
-  .menu-button:not(:disabled):active,
-  .mobile-menu a:active,
-  .primary-button:active,
-  .text-link:active,
-  .service-cta:active,
-  .footer-top > a:last-child:active,
-  .legal-back:active {
-    filter: brightness(0.9);
-    transform: none;
-  }
-
 }
 
-@media (min-width: 821px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
-  .proof-board:hover {
+html[data-motion="reduced"] {
+  scroll-behavior: auto;
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  scroll-behavior: auto !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+html[data-motion="reduced"] :is(.brand, .desktop-nav a, .header-cta, .menu-button, .mobile-menu a, .primary-button, .text-link, .service-cta, .footer-top > a:last-child, .legal-back, .compare-toggle button):active {
+  filter: brightness(0.9);
+  transform: none;
+}
+
+@media (min-width: 821px) and (hover: hover) and (pointer: fine) {
+  html[data-motion="reduced"] .proof-board:hover {
     transform: perspective(1100px) rotateY(-4deg) rotateX(1deg);
   }
 
-  .proof-board:hover .desktop-frame img,
-  .proof-board:hover .mobile-frame img {
+  html[data-motion="reduced"] .proof-board:hover .desktop-frame img,
+  html[data-motion="reduced"] .proof-board:hover .mobile-frame img {
     filter: brightness(1.025) saturate(1.035);
     transform: none;
   }
@@ -2446,46 +2483,29 @@ html[data-motion-input="keyboard"] .mobile-menu:not(.is-open) {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .js .hero-eyebrow,
-  .js .hero h1 > span,
-  .js .hero-summary,
-  .js .hero-actions,
-  .js .hero-note,
-  .js .hero-proof {
-    animation: none !important;
-  }
+html[data-motion="reduced"] .contact-glow,
+html[data-motion="reduced"] .primary-button::before,
+html[data-motion="reduced"] .service-cta::before {
+  display: none;
+}
 
-  .contact-glow,
-  .primary-button::before,
-  .service-cta::before {
-    display: none;
-  }
+html[data-motion="reduced"] :is(.desktop-frame, .primary-button:hover, .text-link:hover svg, .header-cta:hover svg, .footer-top > a:last-child:hover svg, .service-cta:hover svg, .team-grid article:hover img) {
+  transform: none;
+  will-change: auto;
+}
 
-  .desktop-frame,
-  .primary-button:hover,
-  .text-link:hover svg,
-  .header-cta:hover svg,
-  .footer-top > a:last-child:hover svg,
-  .service-cta:hover svg,
-  .team-grid article:hover img {
-    transform: none;
-    will-change: auto;
-  }
+html[data-motion="reduced"] .mobile-frame {
+  transform: rotate(2deg);
+  will-change: auto;
+}
 
-  .mobile-frame {
-    transform: rotate(2deg);
-    will-change: auto;
-  }
+html[data-motion="reduced"] .compare-view:hover .compare-handle,
+html[data-motion="reduced"] .compare-stage.is-dragging .compare-handle {
+  transform: translate(-50%, -50%);
+}
 
-  .compare-view:hover .compare-handle,
-  .compare-stage.is-dragging .compare-handle {
-    transform: translate(-50%, -50%);
-  }
-
-  .mobile-menu:not(.is-open) {
-    visibility: hidden;
-  }
+html[data-motion="reduced"] .mobile-menu:not(.is-open) {
+  visibility: hidden;
 }
 
 /* Refinamento UI/UX: leitura, orientação e acesso aos controles. */
@@ -2637,12 +2657,6 @@ h3 {
   .footer-bottom {
     align-items: flex-start;
     gap: 0.5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .compare-toggle button:not(:disabled):active {
-    transform: none;
   }
 }
 

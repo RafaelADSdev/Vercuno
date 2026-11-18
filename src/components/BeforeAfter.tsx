@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ChevronsLeftRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
+import { isMotionReduced, motionPreferenceEvent, syncMotionPreference } from "@/lib/motion";
 
 type ComparisonImage = {
   src: string;
@@ -57,7 +58,7 @@ export function BeforeAfter({ client, brand, siteHost, desktop, mobile }: Before
     (keyframes: number[], duration: number) => {
       cancelAnimation();
       destination.current = keyframes[keyframes.length - 1];
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (isMotionReduced()) {
         commit(keyframes[keyframes.length - 1]);
         return;
       }
@@ -89,13 +90,13 @@ export function BeforeAfter({ client, brand, siteHost, desktop, mobile }: Before
       }
     };
     const onPreferenceChange = () => {
-      if (preference.matches) stopMotion();
+      if (syncMotionPreference()) stopMotion();
     };
     const observer = "IntersectionObserver" in window ? new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
         observer?.disconnect();
-        if (touchedRef.current || preference.matches || document.documentElement.dataset.motionInput === "keyboard") return;
+        if (touchedRef.current || isMotionReduced() || document.documentElement.dataset.motionInput === "keyboard") return;
         const icon = stage.querySelector<SVGElement>(".compare-handle svg");
         if (icon && typeof icon.animate === "function") {
           // A single directional hint introduces dragging without moving the comparison.
@@ -110,11 +111,15 @@ export function BeforeAfter({ client, brand, siteHost, desktop, mobile }: Before
     ) : null;
     observer?.observe(stage);
     preference.addEventListener("change", onPreferenceChange);
+    window.addEventListener(motionPreferenceEvent, onPreferenceChange);
+    window.addEventListener("storage", onPreferenceChange);
     window.addEventListener("keydown", stopMotion);
 
     return () => {
       observer?.disconnect();
       preference.removeEventListener("change", onPreferenceChange);
+      window.removeEventListener(motionPreferenceEvent, onPreferenceChange);
+      window.removeEventListener("storage", onPreferenceChange);
       window.removeEventListener("keydown", stopMotion);
       hintAnimation.current?.cancel();
       cancelAnimation();

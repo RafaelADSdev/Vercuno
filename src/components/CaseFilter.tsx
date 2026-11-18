@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { flushSync } from "react-dom";
 import type { CaseStudy } from "@/lib/cases";
+import { isMotionReduced, motionPreferenceEvent, syncMotionPreference } from "@/lib/motion";
 import styles from "./CaseFilter.module.css";
 
 type ProjectType = CaseStudy["projectType"];
@@ -58,9 +59,14 @@ export function CaseFilter({ options, items, emptyState }: Props) {
   useEffect(() => {
     const preference = window.matchMedia(motionPreference);
     const running = motion.current;
-    preference.addEventListener("change", stopMotion);
+    const onPreferenceChange = () => {
+      if (syncMotionPreference()) stopMotion();
+    };
+    preference.addEventListener("change", onPreferenceChange);
+    window.addEventListener(motionPreferenceEvent, onPreferenceChange);
+    window.addEventListener("storage", onPreferenceChange);
 
-    if (!preference.matches && "IntersectionObserver" in window && typeof Element.prototype.animate === "function") {
+    if (!isMotionReduced() && "IntersectionObserver" in window && typeof Element.prototype.animate === "function") {
       const observer = new IntersectionObserver((entries) => {
         if (reveal.current !== observer) return;
 
@@ -68,7 +74,7 @@ export function CaseFilter({ options, items, emptyState }: Props) {
           if (!entry.isIntersecting) continue;
           observer.unobserve(entry.target);
           if (document.documentElement.dataset.motionInput === "keyboard") continue;
-          if (preference.matches || entry.target.contains(document.activeElement)) continue;
+          if (isMotionReduced() || entry.target.contains(document.activeElement)) continue;
 
           playMotion(running, entry.target,
             [{ opacity: .45, transform: "translateY(6px)" }, { opacity: 1, transform: "none" }],
@@ -83,7 +89,9 @@ export function CaseFilter({ options, items, emptyState }: Props) {
     return () => {
       reveal.current?.disconnect();
       reveal.current = null;
-      preference.removeEventListener("change", stopMotion);
+      preference.removeEventListener("change", onPreferenceChange);
+      window.removeEventListener(motionPreferenceEvent, onPreferenceChange);
+      window.removeEventListener("storage", onPreferenceChange);
       stopMotion();
     };
   }, []);
@@ -96,7 +104,7 @@ export function CaseFilter({ options, items, emptyState }: Props) {
 
     const container = results.current;
     const running = motion.current;
-    if (!animate || !container?.animate || window.matchMedia(motionPreference).matches) {
+    if (!animate || !container?.animate || isMotionReduced()) {
       stopMotion();
       setFilter(next);
       return;
