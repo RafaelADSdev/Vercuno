@@ -50,7 +50,7 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <main className={`section ${styles.page}`}>
-      <Link className={styles.link} href="/#servicos"><ArrowLeft size={17} aria-hidden="true" /> Todos os pacotes</Link>
+      <Link className={styles.link} href="/#servicos"><ArrowLeft size={17} aria-hidden="true" /> Todos os serviços</Link>
       <article className={styles.article}>
         <header>
           <h1>{service.searchTitle}</h1>

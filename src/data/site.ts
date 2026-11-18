@@ -52,7 +52,7 @@ export const services = [
     projectType: "sistema-web",
     title: "Sistemas web",
     searchTitle: "Desenvolvimento de sistemas web sob medida",
-    description: "Um sistema para simplificar a rotina da sua equipe.",
+    description: "Painéis, integrações e automações para a sua equipe.",
     details: "Mapeamos o processo com sua equipe e definimos as telas, as regras e as integrações conforme a operação. O escopo pode incluir um painel interno, uma área de clientes ou a automação de tarefas repetitivas.",
     deliverables: [
       "Mapeamento do processo",
@@ -71,7 +71,7 @@ export const differentiators = [
   },
   {
     title: "Design e código próprios",
-    description: "O projeto parte das necessidades do seu negócio.",
+    description: "Desenhamos as telas e escrevemos o código do projeto.",
   },
   {
     title: "Performance e acessibilidade",
@@ -83,7 +83,7 @@ export const team = [
   {
     name: "Miguel Leite",
     description:
-      "Organiza os projetos e os prazos. É quem mantém tudo andando no tempo combinado.",
+      "Organiza os projetos e acompanha os prazos combinados.",
     image: "/assets/team/miguel-leite.webp",
   },
   {

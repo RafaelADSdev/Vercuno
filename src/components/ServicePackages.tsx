@@ -7,7 +7,7 @@ export function ServicePackages() {
   return (
     <section className={`section ${styles.packages}`} id="servicos" aria-labelledby="services-title">
       <header className={styles.intro}>
-        <h2 id="services-title">Pacotes de desenvolvimento</h2>
+        <h2 id="services-title">O que desenvolvemos</h2>
         <p>Escolha o tipo de projeto. A gente combina escopo, prazo e valor pelo WhatsApp.</p>
       </header>
 
@@ -30,8 +30,8 @@ export function ServicePackages() {
               <div className={styles.actions}>
                 {href && (
                   <a className="service-cta" href={href} target="_blank" rel="noreferrer"
-                    aria-label={`Consultar ${service.title.toLowerCase()} pelo WhatsApp`}>
-                    Consultar <ArrowUpRight size={16} aria-hidden="true" />
+                    aria-label={`Pedir orçamento de ${service.title.toLowerCase()} pelo WhatsApp`}>
+                    Pedir orçamento <ArrowUpRight size={16} aria-hidden="true" />
                   </a>
                 )}
                 <Link href={details} className={styles.details} aria-label={`Ver detalhes de ${service.title.toLowerCase()}`}>

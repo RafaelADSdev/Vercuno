@@ -8,7 +8,7 @@ import { cases, caseTypes, type CaseStudy } from "@/lib/cases";
 import styles from "./portfolio.module.css";
 
 const title = "Portfólio de clientes";
-const description = "Veja projetos da Vercuno e conheça o escopo, as decisões técnicas e as entregas de cada case.";
+const description = "Projetos da Vercuno, com escopo, decisões técnicas e detalhes de cada entrega.";
 const featured = cases.find((study) => study.featured);
 const portfolioUrl = new URL("/portfolio", siteConfig.url).href;
 const shareImage = new URL(featured?.images.desktopAfter ?? "/assets/brand/vercuno-cover.png", siteConfig.url).href;
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
             }))}
             emptyState={(
               <div className={styles.empty}>
-                <p>Consulte a equipe sobre projetos nesta frente.</p>
+                <p>Consulte a equipe sobre projetos desse serviço.</p>
                 {whatsappHref && <a className="primary-button" href={whatsappHref} target="_blank" rel="noopener noreferrer">
                   Conversar no WhatsApp <ArrowUpRight size={17} aria-hidden="true" />
                 </a>}
@@ -87,7 +87,7 @@ export default function PortfolioPage() {
 
         <aside className={styles.availability} aria-labelledby="availability-title">
           <div>
-            <h2 id="availability-title">Sua marca pode ser o próximo case.</h2>
+            <h2 id="availability-title">Conte à equipe o que seu site ou sistema precisa fazer.</h2>
           </div>
           {whatsappHref && <a className="service-cta" href={whatsappHref} target="_blank" rel="noopener noreferrer">
             Consultar disponibilidade <ArrowUpRight size={17} aria-hidden="true" />
@@ -98,7 +98,7 @@ export default function PortfolioPage() {
       <section className={styles.evidence} aria-labelledby="evidence-title">
         <div className={`section ${styles.evidenceInner}`}>
           <div>
-            <h2 id="evidence-title">Medimos o que entregamos.</h2>
+            <h2 id="evidence-title">Auditoria Lighthouse</h2>
             <p>Auditoria Lighthouse mobile da página inicial do Vercuno em ambiente local.</p>
           </div>
           <dl className={styles.scores}>

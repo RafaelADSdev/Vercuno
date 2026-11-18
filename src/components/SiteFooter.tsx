@@ -10,7 +10,7 @@ export function SiteFooter({ home = false }: { home?: boolean }) {
         <Link className="brand footer-brand" href={home ? "#top" : "/"} prefetch={false} aria-label={`${siteConfig.name}, início`}>
           <Image {...siteConfig.logo} alt="" />
         </Link>
-        <p>Software e design para quem leva o próprio negócio a sério.</p>
+        <p>Design e desenvolvimento de sites e sistemas web.</p>
         <a href={home ? "#top" : "#conteudo"}>Voltar ao topo <ArrowUpRight size={15} aria-hidden="true" /></a>
       </div>
       <div className="footer-bottom">

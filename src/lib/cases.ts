@@ -66,7 +66,7 @@ export const cases: readonly CaseStudy[] = [
       caption: {
         desktop: "O menu dá acesso ao pedido de orçamento.",
         mobile: "Os botões de contato e serviços ocupam a largura da tela.",
-        comparison: "Compare a apresentação dos serviços e o acesso ao orçamento nas versões de desktop e celular.",
+        comparison: "Apresentação dos serviços e acesso ao orçamento antes e depois, em desktop e celular.",
       },
     },
   },
@@ -77,7 +77,7 @@ export const cases: readonly CaseStudy[] = [
     projectType: "site-institucional",
     year: 2026,
     liveUrl: "https://psicologocaio.vercel.app/",
-    summary: "Site institucional que explica o atendimento psicológico online e facilita o agendamento.",
+    summary: "Site institucional com informações sobre atendimento psicológico online e agendamento pelo WhatsApp.",
     // TODO: confirmar com Rafael o desafio original do projeto.
     challenge: "Apresentar o profissional e explicar como funciona o atendimento online antes do primeiro contato.",
     scope: ["Identidade visual", "Organização do conteúdo", "Agendamento pelo WhatsApp"],
@@ -87,7 +87,7 @@ export const cases: readonly CaseStudy[] = [
       "Política de privacidade e orientação para situações de emergência",
     ],
     technicalNotes: [
-      "Azul-marinho e títulos em itálico estruturam a hierarquia visual.",
+      "O site usa azul-marinho e títulos em itálico.",
       "Os temas atendidos usam controles nativos de expansão. A incorporação do Instagram usa carregamento adiado.",
       "O HTML inclui descrição da página e URL canônica para busca.",
     ],
@@ -116,7 +116,7 @@ export const cases: readonly CaseStudy[] = [
     liveUrl: "https://fotografia-flax.vercel.app/",
     summary: "Site de estúdio fotográfico em Guarulhos com galeria de ensaios e agendamento pelo WhatsApp.",
     // TODO: confirmar com Rafael o desafio original do projeto.
-    challenge: "Reunir os ensaios, as informações do estúdio e o caminho de agendamento para gestantes, bebês e famílias.",
+    challenge: "Reunir os ensaios, as informações do estúdio e o contato para agendar sessões de gestantes, bebês e famílias.",
     scope: ["Identidade visual", "Galeria de ensaios", "Agendamento pelo WhatsApp"],
     features: [
       "Retrato de abertura, seção de ensaios e página de galeria",

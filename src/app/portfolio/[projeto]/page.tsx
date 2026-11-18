@@ -114,7 +114,7 @@ function CaseDetails({ project }: { project: CaseStudy }) {
           </ul>
           {project.features.length > 0 && (
             <div>
-              <h3>Recursos do site</h3>
+              <h3>Recursos</h3>
               <ul className={styles.list}>
                 {project.features.map((item) => <li key={item}>{item}</li>)}
               </ul>
@@ -134,7 +134,7 @@ function CaseDetails({ project }: { project: CaseStudy }) {
       </section>
 
       <aside className={`${styles.detailRow} ${styles.evidence}`} aria-labelledby="case-evidence">
-        <h2 id="case-evidence">Nota de evidência</h2>
+        <h2 id="case-evidence">Sobre este projeto</h2>
         <p>{project.evidenceNote}</p>
       </aside>
     </div>
@@ -145,7 +145,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { project, previous, next } = await getCase(params);
   const type = caseTypes[project.projectType].singular;
   const whatsapp = buildWhatsappHref(
-    `Olá! Vim pelo site da ${siteConfig.name} e vi o case ${project.client}. Gostaria de conversar sobre um projeto semelhante.`,
+    `Olá! Vim pelo site da ${siteConfig.name} e vi o projeto ${project.client}. Gostaria de conversar sobre um projeto semelhante.`,
   );
   const jsonLd = {
     "@context": "https://schema.org",
@@ -165,7 +165,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <article aria-labelledby="project-title">
         <header className={`section ${styles.hero}`}>
           <Link className={styles.back} href="/portfolio">
-            <ArrowLeft size={17} aria-hidden="true" /> Todos os cases
+            <ArrowLeft size={17} aria-hidden="true" /> Todos os projetos
           </Link>
           <div className={styles.heroRow}>
             <div>
@@ -207,16 +207,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
 
           {(previous || next) && (
-            <nav className={styles.caseNavigation} aria-label="Navegação entre cases">
+            <nav className={styles.caseNavigation} aria-label="Navegação entre projetos">
               {previous && (
                 <Link className={styles.previous} href={`/portfolio/${previous.slug}`} prefetch={false}>
-                  <span><ArrowLeft size={16} aria-hidden="true" /> Case anterior</span>
+                  <span><ArrowLeft size={16} aria-hidden="true" /> Projeto anterior</span>
                   <strong>{previous.client}</strong>
                 </Link>
               )}
               {next && (
                 <Link className={styles.next} href={`/portfolio/${next.slug}`} prefetch={false}>
-                  <span>Próximo case <ArrowRight size={16} aria-hidden="true" /></span>
+                  <span>Próximo projeto <ArrowRight size={16} aria-hidden="true" /></span>
                   <strong>{next.client}</strong>
                 </Link>
               )}

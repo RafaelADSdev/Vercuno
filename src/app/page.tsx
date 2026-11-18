@@ -68,7 +68,7 @@ export default function Home() {
             <div className="proof-board">
               <div className="board-meta" aria-hidden="true">
                 <span>PROJETO ENTREGUE</span>
-                <span>NAUTICA.ENG</span>
+                <span>NÁUTICA ENGENHARIA</span>
               </div>
               <div className="desktop-frame">
                 <div className="browser-bar" aria-hidden="true">
@@ -98,7 +98,7 @@ export default function Home() {
                 />
               </div>
               <div className="board-note">
-                <span>ENTREGA REAL</span>
+                <span>LANDING PAGE</span>
                 <strong>Site responsivo + direção visual</strong>
               </div>
             </div>
