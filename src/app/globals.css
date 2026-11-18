@@ -385,6 +385,22 @@ a {
   gap: 0.55rem;
 }
 
+.hero-actions .text-link {
+  position: relative;
+}
+
+.hero-actions .text-link::after {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 1px;
+  background: var(--violet-pale);
+  content: "";
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms var(--motion-out);
+}
+
 :is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link) svg {
   --arrow-x: 3px;
   --arrow-y: -3px;
@@ -401,14 +417,18 @@ a {
   --arrow-y: 0px;
 }
 
-:is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link) .lucide-arrow-down {
+.hero-actions .text-link .lucide-arrow-down {
   --arrow-x: 0px;
-  --arrow-y: 4px;
+  --arrow-y: 6px;
 }
 
 @media (hover: hover) and (pointer: fine) {
   html[data-motion="full"]:not([data-motion-input="keyboard"]) :is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link):hover svg {
     transform: translate(var(--arrow-x), var(--arrow-y));
+  }
+
+  html[data-motion="full"]:not([data-motion-input="keyboard"]) .hero-actions .text-link:hover::after {
+    transform: scaleX(1);
   }
 
   .primary-button::before,

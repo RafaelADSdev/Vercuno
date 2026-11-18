@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { MotionToggle } from "./MotionToggle";
-import { ScrollToTop } from "./ScrollToTop";
+import { ScrollLink } from "./ScrollLink";
 
 export function SiteFooter({ home = false }: { home?: boolean }) {
   return (
@@ -12,7 +13,9 @@ export function SiteFooter({ home = false }: { home?: boolean }) {
           <Image {...siteConfig.logo} alt="" />
         </Link>
         <p>Design e desenvolvimento de sites e sistemas web.</p>
-        <ScrollToTop href={home ? "#top" : "#conteudo"} />
+        <ScrollLink className="arrow-link" href={home ? "#top" : "#conteudo"} focusId="conteudo">
+          Voltar ao topo <ArrowUpRight size={15} aria-hidden="true" />
+        </ScrollLink>
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} {siteConfig.name} · Brasil</span>

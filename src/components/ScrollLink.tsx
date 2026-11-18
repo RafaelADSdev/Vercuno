@@ -1,32 +1,41 @@
 "use client";
 
-import { useEffect, useRef, type MouseEvent } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import { isMotionReduced, motionPreferenceEvent } from "@/lib/motion";
 
-export function ScrollToTop({ href }: { href: "#top" | "#conteudo" }) {
+export function ScrollLink({ href, focusId, className, children }: {
+  href: `#${string}`;
+  focusId: string;
+  className: string;
+  children: ReactNode;
+}) {
   const cancelScroll = useRef<(() => void) | null>(null);
 
   useEffect(() => () => cancelScroll.current?.(), [href]);
 
-  function scrollToTop(event: MouseEvent<HTMLAnchorElement>) {
+  function scrollToSection(event: MouseEvent<HTMLAnchorElement>) {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
     event.preventDefault();
     cancelScroll.current?.();
 
+    const startY = window.scrollY;
+    const scrollPadding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const targetY = Math.max(0, startY + target.getBoundingClientRect().top - scrollPadding);
+    const distance = targetY - startY;
     const finish = () => {
-      window.scrollTo({ top: 0, behavior: "instant" });
+      window.scrollTo({ top: targetY, behavior: "instant" });
       if (window.location.hash !== href) window.history.pushState(window.history.state, "", href);
-      document.getElementById("conteudo")?.focus({ preventScroll: true });
+      document.getElementById(focusId)?.focus({ preventScroll: true });
     };
 
-    const startY = window.scrollY;
-    if (isMotionReduced() || startY < 1) {
+    if (isMotionReduced() || Math.abs(distance) < 1) {
       finish();
       return;
     }
 
-    const duration = Math.min(1250, Math.max(700, startY * .16));
+    const duration = Math.min(1250, Math.max(700, Math.abs(distance) * .16));
     const startedAt = performance.now();
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
@@ -53,9 +62,9 @@ export function ScrollToTop({ href }: { href: "#top" | "#conteudo" }) {
 
     const step = (now: number) => {
       const progress = Math.min((now - startedAt) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      window.scrollTo({ top: startY * (1 - eased), behavior: "instant" });
       if (progress < 1) {
+        const eased = progress * progress * (3 - 2 * progress);
+        window.scrollTo({ top: startY + distance * eased, behavior: "instant" });
         frame = window.requestAnimationFrame(step);
       } else {
         cancel();
@@ -75,5 +84,5 @@ export function ScrollToTop({ href }: { href: "#top" | "#conteudo" }) {
     frame = window.requestAnimationFrame(step);
   }
 
-  return <a className="arrow-link" href={href} onClick={scrollToTop}>Voltar ao topo <ArrowUpRight size={15} aria-hidden="true" /></a>;
+  return <a className={className} href={href} onClick={scrollToSection}>{children}</a>;
 }

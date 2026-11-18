@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ProjectPortfolio } from "@/components/ProjectPortfolio";
 import { ReviewCarousel } from "@/components/ReviewCarousel";
+import { ScrollLink } from "@/components/ScrollLink";
 import { ServicePackages } from "@/components/ServicePackages";
 import { SiteFooter } from "@/components/SiteFooter";
 import { googleBusinessProfileUrl, googleReviews } from "@/data/reviews";
@@ -56,9 +57,9 @@ export default function Home() {
                 target={whatsappHref ? "_blank" : undefined} rel={whatsappHref ? "noreferrer" : undefined}>
                 {whatsappHref ? "Falar no WhatsApp" : "Falar com a equipe"} <ArrowRight size={18} aria-hidden="true" />
               </a>
-              <a className="text-link" href="#portfolio">
+              <ScrollLink className="text-link" href="#portfolio" focusId="portfolio-title">
                 Ver portfólio <ArrowDown size={17} aria-hidden="true" />
-              </a>
+              </ScrollLink>
             </div>
           </div>
 

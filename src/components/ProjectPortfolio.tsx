@@ -13,7 +13,7 @@ export function ProjectPortfolio() {
     <section className={styles.portfolio} id="portfolio" aria-labelledby="portfolio-title">
       <div className="section">
         <div className={styles.heading}>
-          <h2 id="portfolio-title">Portfólio</h2>
+          <h2 id="portfolio-title" tabIndex={-1}>Portfólio</h2>
           <Link className={`${styles.more} arrow-link`} href="/portfolio" prefetch={false}>Ver portfólio completo <ArrowUpRight size={16} aria-hidden="true" /></Link>
         </div>
         <div className={styles.groups}>
