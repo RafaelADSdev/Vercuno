@@ -108,6 +108,7 @@ export default function PortfolioPage() {
       </section>
 
       <section className="contact-section" id="contato" aria-labelledby="portfolio-contact">
+        <div className="contact-glow" aria-hidden="true" />
         <div className="section contact-copy">
           <h2 id="portfolio-contact">Conversa direta com um sócio.</h2>
           <p>Conte o que você quer construir.</p>

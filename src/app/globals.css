@@ -361,6 +361,19 @@ a {
   transform: translateY(-2px);
 }
 
+.primary-button::before,
+.service-cta::before {
+  position: absolute;
+  top: -40%;
+  left: -30%;
+  width: 25%;
+  height: 180%;
+  background: rgb(255 255 255 / 18%);
+  content: "";
+  pointer-events: none;
+  transform: rotate(20deg) translateX(-220%);
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -372,20 +385,47 @@ a {
   gap: 0.55rem;
 }
 
-.text-link svg,
-.header-cta svg,
-.footer-top > a:last-child svg {
-  transition: transform 180ms var(--motion-out);
+:is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link) svg {
+  --arrow-x: 3px;
+  --arrow-y: -3px;
+  transition: transform 220ms var(--motion-out);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .text-link:hover svg {
-    transform: translateY(3px);
+:is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link) .lucide-arrow-right {
+  --arrow-x: 4px;
+  --arrow-y: 0px;
+}
+
+:is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link) .lucide-arrow-left {
+  --arrow-x: -4px;
+  --arrow-y: 0px;
+}
+
+:is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link) .lucide-arrow-down {
+  --arrow-x: 0px;
+  --arrow-y: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html:not([data-motion-input="keyboard"]) :is(.primary-button, .service-cta, .text-link, .header-cta, .arrow-link):hover svg {
+    transform: translate(var(--arrow-x), var(--arrow-y));
   }
 
-  .header-cta:hover svg,
-  .footer-top > a:last-child:hover svg {
-    transform: translate(2px, -2px);
+  .primary-button::before,
+  .service-cta::before {
+    transition: transform 420ms var(--motion-out);
+  }
+
+  html:not([data-motion-input="keyboard"]) :is(.primary-button, .service-cta):hover::before {
+    transform: rotate(20deg) translateX(620%);
+  }
+
+  .footer-top > .arrow-link::after {
+    transition: transform 220ms var(--motion-out);
+  }
+
+  html:not([data-motion-input="keyboard"]) .footer-top > .arrow-link:hover::after {
+    transform: scaleX(1);
   }
 }
 
@@ -727,6 +767,7 @@ a {
 }
 
 .service-cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -739,13 +780,13 @@ a {
   font-weight: 700;
   gap: 0.55rem;
   white-space: normal;
+  overflow: hidden;
   transition: transform 180ms var(--motion-out);
 }
 
 .service-cta svg {
   flex: none;
   color: var(--violet-pale);
-  transition: transform 180ms var(--motion-out);
 }
 
 .service-row:hover .service-cta {
@@ -761,7 +802,6 @@ a {
 
 .service-cta:hover svg {
   color: var(--on-violet);
-  transform: translate(2px, -2px);
 }
 
 .case-section {
@@ -1776,12 +1816,26 @@ a {
 }
 
 .footer-top > a:last-child {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-self: end;
   font-size: 0.76rem;
   font-weight: 700;
   gap: 0.45rem;
+}
+
+.footer-top > .arrow-link::after {
+  position: absolute;
+  right: 0;
+  bottom: .45rem;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
 }
 
 .footer-bottom {
@@ -2402,7 +2456,9 @@ html[data-motion-input="keyboard"] .mobile-menu:not(.is-open) {
     animation: none !important;
   }
 
-  .contact-glow {
+  .contact-glow,
+  .primary-button::before,
+  .service-cta::before {
     display: none;
   }
 

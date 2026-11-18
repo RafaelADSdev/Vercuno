@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/Header";
-import { MotionController } from "@/components/MotionController";
 import { ProjectPortfolio } from "@/components/ProjectPortfolio";
 import { ReviewCarousel } from "@/components/ReviewCarousel";
 import { ServicePackages } from "@/components/ServicePackages";
@@ -35,7 +34,6 @@ export default function Home() {
         Pular para o conteúdo
       </a>
       <Header />
-      <MotionController />
       <div className="page-ruler" aria-hidden="true">
         <span />
       </div>

@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function MotionController() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.documentElement;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -15,7 +18,7 @@ export function MotionController() {
     let frame = 0;
 
     // Avoid restarting the hero when hydrating an anchor or a restored scroll position.
-    if (window.scrollY < 24 && !window.location.hash && !reduceMotion.matches) {
+    if (hero && window.scrollY < 24 && !window.location.hash && !reduceMotion.matches && root.dataset.motionInput !== "keyboard") {
       root.classList.add("js");
     }
 
@@ -64,7 +67,10 @@ export function MotionController() {
       schedule();
     };
     const onPointer = () => {
-      root.dataset.motionInput = "pointer";
+      if (root.dataset.motionInput !== "pointer") root.dataset.motionInput = "pointer";
+    };
+    const onMouseMove = (event: PointerEvent) => {
+      if (event.pointerType === "mouse" && (event.movementX || event.movementY)) onPointer();
     };
     const handlePointerMove = (event: PointerEvent) => {
       if (event.pointerType === "touch" || reduceMotion.matches || !finePointer.matches) return;
@@ -90,7 +96,7 @@ export function MotionController() {
 
     // Content stays visible in CSS. Only elements initially below the fold are observed.
     const targets = Array.from(document.querySelectorAll<HTMLElement>(
-      "#servicos header > *, #portfolio h2, .team-heading > *, .team-grid article, .contact-copy > *",
+      "[data-motion-reveal], #servicos header > *, #portfolio h2, .team-heading > *, .team-grid article, .contact-copy > *",
     )).filter((element) => element.getBoundingClientRect().top >= window.innerHeight);
 
     const observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
@@ -117,6 +123,7 @@ export function MotionController() {
     window.addEventListener("resize", schedule, { passive: true });
     window.addEventListener("keydown", onKeyboard, true);
     window.addEventListener("pointerdown", onPointer, true);
+    window.addEventListener("pointermove", onMouseMove, { passive: true });
     reduceMotion.addEventListener("change", onPreferenceChange);
     finePointer.addEventListener("change", onPreferenceChange);
     contact?.addEventListener("pointermove", handlePointerMove, { passive: true });
@@ -129,13 +136,13 @@ export function MotionController() {
       window.removeEventListener("resize", schedule);
       window.removeEventListener("keydown", onKeyboard, true);
       window.removeEventListener("pointerdown", onPointer, true);
+      window.removeEventListener("pointermove", onMouseMove);
       reduceMotion.removeEventListener("change", onPreferenceChange);
       finePointer.removeEventListener("change", onPreferenceChange);
       contact?.removeEventListener("pointermove", handlePointerMove);
       contact?.removeEventListener("pointerleave", handlePointerLeave);
       if (frame) window.cancelAnimationFrame(frame);
       root.classList.remove("js");
-      delete root.dataset.motionInput;
       root.style.removeProperty("--page-progress");
       root.style.removeProperty("--hero-parallax");
       hero?.style.removeProperty("--hero-parallax");
@@ -143,7 +150,7 @@ export function MotionController() {
       contact?.style.removeProperty("--pointer-x");
       contact?.style.removeProperty("--pointer-y");
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

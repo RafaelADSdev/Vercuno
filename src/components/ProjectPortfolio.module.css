@@ -15,16 +15,23 @@
 .more:focus-visible { outline-color: var(--violet-deep); }
 
 .groups {
+  --project-column-gap: clamp(1rem, 2.5vw, 2rem);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.5rem, 4vw, 3.25rem) clamp(1rem, 2.5vw, 2rem);
+  gap: clamp(1.5rem, 4vw, 3.25rem) var(--project-column-gap);
   margin-top: clamp(1.4rem, 4vw, 3rem);
 }
 
+.group {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+}
 .group[data-wide] { grid-column: span 2; }
 .group[data-category="sistema-web"] { grid-column: 1 / -1; }
 .groupTitle { margin: 0 0 .8rem; padding-top: .65rem; border-top: 1px solid rgb(20 20 20 / 24%); color: var(--violet-deep); font-size: .85rem; font-weight: 750; }
-.projects { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
+.projects { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem var(--project-column-gap); margin: 0; padding: 0; list-style: none; }
+.projects > li { display: grid; min-width: 0; }
 .group[data-wide] .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 @media (max-width: 780px) {

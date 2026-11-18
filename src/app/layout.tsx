@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
+import { MotionController } from "@/components/MotionController";
 
 const siteTitle = `${siteConfig.name} · Criação de Sites, Landing Pages e Sistemas Web`;
 
@@ -28,7 +29,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <MotionController />
+        {children}
+      </body>
     </html>
   );
 }

@@ -11,7 +11,7 @@ export function SiteFooter({ home = false }: { home?: boolean }) {
           <Image {...siteConfig.logo} alt="" />
         </Link>
         <p>Design e desenvolvimento de sites e sistemas web.</p>
-        <a href={home ? "#top" : "#conteudo"}>Voltar ao topo <ArrowUpRight size={15} aria-hidden="true" /></a>
+        <a className="arrow-link" href={home ? "#top" : "#conteudo"}>Voltar ao topo <ArrowUpRight size={15} aria-hidden="true" /></a>
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} {siteConfig.name} · Brasil</span>

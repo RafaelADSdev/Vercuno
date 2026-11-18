@@ -17,7 +17,7 @@ export function ServicePackages() {
           const details = `/servicos/${service.slug}`;
 
           return (
-            <li className={styles.row} key={service.slug}>
+            <li className={styles.row} key={service.slug} data-motion-reveal>
               <div className={styles.summary}>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
@@ -34,7 +34,7 @@ export function ServicePackages() {
                     Pedir orçamento <ArrowUpRight size={16} aria-hidden="true" />
                   </a>
                 )}
-                <Link href={details} className={styles.details} aria-label={`Ver detalhes de ${service.title.toLowerCase()}`}>
+                <Link href={details} className={`${styles.details} arrow-link`} aria-label={`Ver detalhes de ${service.title.toLowerCase()}`}>
                   Ver detalhes <ArrowRight size={14} aria-hidden="true" />
                 </Link>
               </div>

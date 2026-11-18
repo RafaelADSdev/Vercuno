@@ -164,7 +164,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <article aria-labelledby="project-title">
         <header className={`section ${styles.hero}`}>
-          <Link className={styles.back} href="/portfolio">
+          <Link className={`${styles.back} arrow-link`} href="/portfolio">
             <ArrowLeft size={17} aria-hidden="true" /> Todos os projetos
           </Link>
           <div className={styles.heroRow}>
@@ -209,13 +209,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {(previous || next) && (
             <nav className={styles.caseNavigation} aria-label="Navegação entre projetos">
               {previous && (
-                <Link className={styles.previous} href={`/portfolio/${previous.slug}`} prefetch={false}>
+                <Link className={`${styles.previous} arrow-link`} href={`/portfolio/${previous.slug}`} prefetch={false}>
                   <span><ArrowLeft size={16} aria-hidden="true" /> Projeto anterior</span>
                   <strong>{previous.client}</strong>
                 </Link>
               )}
               {next && (
-                <Link className={styles.next} href={`/portfolio/${next.slug}`} prefetch={false}>
+                <Link className={`${styles.next} arrow-link`} href={`/portfolio/${next.slug}`} prefetch={false}>
                   <span>Próximo projeto <ArrowRight size={16} aria-hidden="true" /></span>
                   <strong>{next.client}</strong>
                 </Link>

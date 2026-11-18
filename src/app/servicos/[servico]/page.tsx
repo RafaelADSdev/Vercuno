@@ -50,7 +50,7 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <main className={`section ${styles.page}`}>
-      <Link className={styles.link} href="/#servicos"><ArrowLeft size={17} aria-hidden="true" /> Todos os serviços</Link>
+      <Link className={`${styles.link} arrow-link`} href="/#servicos"><ArrowLeft size={17} aria-hidden="true" /> Todos os serviços</Link>
       <article className={styles.article}>
         <header>
           <h1>{service.searchTitle}</h1>
@@ -69,7 +69,7 @@ export default async function ServicePage({ params }: Props) {
             ))}
           </ul>
           {related.map((study) => (
-            <Link key={study.slug} className={styles.link} href={`/portfolio/${study.slug}`}>
+            <Link key={study.slug} className={`${styles.link} arrow-link`} href={`/portfolio/${study.slug}`}>
               Ver o projeto {study.client} <ArrowRight size={16} aria-hidden="true" />
             </Link>
           ))}
