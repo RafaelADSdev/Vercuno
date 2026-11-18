@@ -19,6 +19,8 @@ export function MotionController() {
     const entrances = new Set<Animation>();
     let frame = 0;
     let lastFrame = 0;
+    let lastScrollY = window.scrollY;
+    let scrollingDown = true;
 
     // Avoid restarting the hero when hydrating an anchor or a restored scroll position.
     if (hero && window.scrollY < 24 && !window.location.hash && !isMotionReduced() && root.dataset.motionInput !== "keyboard") {
@@ -70,6 +72,12 @@ export function MotionController() {
         lastFrame = performance.now();
         frame = window.requestAnimationFrame(update);
       }
+    };
+    const onScroll = () => {
+      const position = window.scrollY;
+      if (position !== lastScrollY) scrollingDown = position > lastScrollY;
+      lastScrollY = position;
+      schedule();
     };
 
     const onKeyboard = () => {
@@ -126,7 +134,7 @@ export function MotionController() {
     const observer = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
       let order = 0;
       for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
+        if (!entry.isIntersecting || !scrollingDown) continue;
         observer?.unobserve(entry.target);
         if (isMotionReduced() || root.dataset.motionInput === "keyboard") continue;
         const element = entry.target as HTMLElement;
@@ -143,7 +151,7 @@ export function MotionController() {
     targets.forEach((element) => observer?.observe(element));
 
     update();
-    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", schedule, { passive: true });
     window.addEventListener("keydown", onKeyboard, true);
     window.addEventListener("pointerdown", onPointer, true);
@@ -158,7 +166,7 @@ export function MotionController() {
     return () => {
       observer?.disconnect();
       finishEntrances();
-      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", schedule);
       window.removeEventListener("keydown", onKeyboard, true);
       window.removeEventListener("pointerdown", onPointer, true);
