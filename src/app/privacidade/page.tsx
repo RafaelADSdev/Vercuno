@@ -47,8 +47,8 @@ export default function PrivacyPage() {
 
         <h2>Seus direitos</h2>
         <p>
-          Você poderá solicitar acesso, correção ou exclusão dos dados. O contato do controlador será incluído
-          aqui antes da publicação oficial do site.
+          Você poderá solicitar acesso, correção ou exclusão dos dados pelo e-mail{" "}
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
         </p>
       </article>
     </main>

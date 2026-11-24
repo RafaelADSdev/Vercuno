@@ -21,6 +21,7 @@ export function SiteFooter({ home = false }: { home?: boolean }) {
         <span>© {new Date().getFullYear()} {siteConfig.name} · Brasil</span>
         <nav className="footer-links" aria-label="Navegação do rodapé">
           <MotionToggle />
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
           <Link href="/portfolio" prefetch={false}>Portfólio</Link>
           <Link href="/privacidade" prefetch={false}>Política de Privacidade</Link>
         </nav>

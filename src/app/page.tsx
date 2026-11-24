@@ -159,6 +159,7 @@ export default function Home() {
                 O canal de WhatsApp será exibido quando o número comercial for configurado.
               </p>
             )}
+            <p className="contact-note">E-mail: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
           </div>
         </section>
       </main>

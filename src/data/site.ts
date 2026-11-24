@@ -4,6 +4,7 @@ const productionUrl = (process.env.NEXT_PUBLIC_SITE_URL || (deploymentHost ? `ht
 
 export const siteConfig = {
   name: siteName,
+  email: "contato@vercuno.com.br",
   logo: { src: "/assets/brand/vercuno.svg", width: 527, height: 103 },
   description:
     "A Vercuno cria landing pages, sites institucionais e sistemas web sob medida. Conheça os projetos e fale com a equipe pelo WhatsApp.",
