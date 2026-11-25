@@ -5,7 +5,7 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade",
-  description: `Como a ${siteConfig.name} trata os dados enviados pelo formulário de contato.`,
+  description: `Como a ${siteConfig.name} trata dados de contato e de navegação.`,
   alternates: { canonical: "/privacidade" },
 };
 
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       <article>
         <p className="section-label">Documento legal</p>
         <h1>Política de Privacidade</h1>
-        <p className="legal-updated">Última atualização: 18 de setembro de 2026.</p>
+        <p className="legal-updated">Última atualização: 24 de novembro de 2026.</p>
 
         <h2>Quais dados coletamos</h2>
         <p>
@@ -31,6 +31,13 @@ export default function PrivacyPage() {
           Usamos essas informações exclusivamente para analisar a solicitação, responder ao contato e conduzir
           uma possível conversa comercial relacionada ao projeto descrito.
         </p>
+
+        <h2>Medição de visitas</h2>
+        <p>
+          Usamos o StayView, da StayCloud, para entender como o site é usado. A ferramenta mede as páginas
+          visitadas, a origem dos acessos e informações técnicas, como idioma e tamanho da tela.
+        </p>
+        <p><a href="/privacidade?sv_optout=true">Desativar a medição neste navegador</a></p>
 
         <h2>Armazenamento e acesso</h2>
         <p>

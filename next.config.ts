@@ -1,16 +1,19 @@
 import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
+const stayViewOrigin = "https://sv.stayview.com.br";
+const stayViewScript = isDev ? "" : ` ${stayViewOrigin}/sv.js`;
+const stayViewConnections = isDev ? "" : ` ${stayViewOrigin}/api/analytics/config ${stayViewOrigin}/api/analytics/ingest`;
 
 // Static App Router pages use inline scripts to bootstrap React and its payload.
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}${stayViewScript}`,
   "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self'",
+  `connect-src 'self'${stayViewConnections}`,
   "object-src 'none'",
   "frame-src 'none'",
   "frame-ancestors 'none'",

@@ -30,6 +30,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
+      {process.env.NODE_ENV === "production" && (
+        <head>
+          <script defer src="https://sv.stayview.com.br/sv.js" data-site="Rqh2PLVLhXfzgp5A" crossOrigin="anonymous" />
+        </head>
+      )}
       <body>
         <link rel="preload" href={latinFont} as="font" type="font/woff2" crossOrigin="anonymous" />
         <MotionController />
