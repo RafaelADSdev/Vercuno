@@ -174,11 +174,11 @@ export const cases: readonly CaseStudy[] = [
     stack: ["Astro"],
     evidenceNote: "As capturas mostram a abertura do catálogo publicado em computador e celular.",
     images: {
-      desktopAfter: "/assets/cases/marly-cestas-e-flores-desktop.webp",
-      mobileAfter: "/assets/cases/marly-cestas-e-flores-mobile.webp",
+      desktopAfter: "/assets/cases/marly-cestas-e-flores-v2-desktop.webp",
+      mobileAfter: "/assets/cases/marly-cestas-e-flores-v2-mobile.webp",
       alt: {
-        desktop: "Site da Marly com fotos de buquês ao lado da apresentação e do botão Explorar catálogo",
-        mobile: "Site da Marly no celular com o botão Explorar catálogo acima das fotos de buquês",
+        desktop: "Site da Marly com a logo com laço no cabeçalho e fotos de buquês na abertura",
+        mobile: "Site da Marly no celular com a logo com laço acima da apresentação e das fotos de buquês",
       },
       dimensions: { desktop: { width: 1440, height: 900 }, mobile: { width: 390, height: 844 } },
       desktopPreviewWidths: [480, 750],
