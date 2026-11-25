@@ -9,7 +9,7 @@ import { ServicePackages } from "@/components/ServicePackages";
 import { SiteFooter } from "@/components/SiteFooter";
 import { googleBusinessProfileUrl, googleReviews } from "@/data/reviews";
 import { siteConfig, team, whatsappHref, whatsappNumber } from "@/data/site";
-import { nauticaDesktopPreviewWidths } from "@/lib/cases";
+import { nauticaDesktopPreviewWidths, nauticaLiveUrl } from "@/lib/cases";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -75,7 +75,7 @@ export default function Home() {
                   <i />
                   <i />
                   <i />
-                  <span>nauticaengenharia.vercel.app</span>
+                  <span>{new URL(nauticaLiveUrl).hostname}</span>
                 </div>
                 <AssetImage
                   src="/assets/cases/nautica-after-desktop.webp"

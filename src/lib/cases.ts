@@ -35,6 +35,7 @@ export type CaseStudy = {
 };
 
 export const nauticaDesktopPreviewWidths = [480, 750, 1080] as const;
+export const nauticaLiveUrl = "https://nautica.srv1113578.stayx.cloud/";
 
 // O ano indica quando o projeto foi registrado em código ou em capturas verificáveis.
 export const cases: readonly CaseStudy[] = [
@@ -44,7 +45,7 @@ export const cases: readonly CaseStudy[] = [
     sector: "Engenharia",
     projectType: "landing-page",
     year: 2026,
-    liveUrl: "https://nauticaengenharia.vercel.app/",
+    liveUrl: nauticaLiveUrl,
     featured: true,
     // TODO: confirmar com Rafael o desafio original do projeto.
     summary: "Landing page de serviços de engenharia com pedido de orçamento pelo WhatsApp.",
@@ -80,7 +81,7 @@ export const cases: readonly CaseStudy[] = [
     sector: "Psicologia clínica",
     projectType: "site-institucional",
     year: 2026,
-    liveUrl: "https://psicologocaio.vercel.app/",
+    liveUrl: "https://caio.srv1113578.stayx.cloud/",
     summary: "Site institucional com informações sobre atendimento psicológico online e agendamento pelo WhatsApp.",
     // TODO: confirmar com Rafael o desafio original do projeto.
     challenge: "Apresentar o profissional e explicar como funciona o atendimento online antes do primeiro contato.",
@@ -118,7 +119,7 @@ export const cases: readonly CaseStudy[] = [
     sector: "Fotografia",
     projectType: "site-institucional",
     year: 2026,
-    liveUrl: "https://fotografia-flax.vercel.app/",
+    liveUrl: "https://fotografia.srv1113578.stayx.cloud/",
     summary: "Site de estúdio fotográfico em Guarulhos com galeria de ensaios e agendamento pelo WhatsApp.",
     // TODO: confirmar com Rafael o desafio original do projeto.
     challenge: "Reunir os ensaios, as informações do estúdio e o contato para agendar sessões de gestantes, bebês e famílias.",
@@ -156,7 +157,7 @@ export const cases: readonly CaseStudy[] = [
     sector: "Atendimento comercial",
     projectType: "sistema-web",
     year: 2026,
-    liveUrl: "https://extension-kennedy-dans-compile.trycloudflare.com/login",
+    liveUrl: "https://zelo.srv1113578.stayx.cloud/",
     repositoryUrl: "https://github.com/RafaelADSdev/Zelo",
     summary: "Painel de atendimento pelo WhatsApp com catálogo, assistente de IA e revisão de campanhas.",
     challenge: "Reunir as conversas, os materiais e as regras de atendimento em um painel com controle para a equipe.",
@@ -192,6 +193,7 @@ export const cases: readonly CaseStudy[] = [
     sector: "Gestão financeira",
     projectType: "sistema-web",
     year: 2026,
+    liveUrl: "https://prumo.srv1113578.stayx.cloud/",
     repositoryUrl: "https://github.com/RafaelADSdev/prumo",
     summary: "Sistema financeiro para acompanhar recebimentos, pagamentos, serviços e despesas recorrentes.",
     challenge: "Organizar os compromissos financeiros e acompanhar o que entrou, o que saiu e o que ainda está previsto.",
