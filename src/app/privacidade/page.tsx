@@ -35,7 +35,9 @@ export default function PrivacyPage() {
         <h2>Medição de visitas</h2>
         <p>
           Usamos o StayView, da StayCloud, para entender como o site é usado. A ferramenta mede as páginas
-          visitadas, a origem dos acessos e informações técnicas, como idioma e tamanho da tela.
+          visitadas, a origem dos acessos e informações técnicas, como idioma e tamanho da tela. Quando
+          gravações e mapas de calor estão ativos, a ferramenta também registra a navegação, os cliques e a
+          rolagem na página. O StayView mascara os valores digitados nos campos de formulário.
         </p>
         <p><a href="/privacidade?sv_optout=true">Desativar a medição neste navegador</a></p>
 

@@ -2,18 +2,20 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
 const stayViewOrigin = "https://sv.stayview.com.br";
-const stayViewScript = isDev ? "" : ` ${stayViewOrigin}/sv.js`;
-const stayViewConnections = isDev ? "" : ` ${stayViewOrigin}/api/analytics/config ${stayViewOrigin}/api/analytics/ingest`;
+const stayViewScripts = `${stayViewOrigin}/sv.js ${stayViewOrigin}/sv-rec.js`;
+const stayViewConnections = ["config", "ingest", "replay"]
+  .map((endpoint) => `${stayViewOrigin}/api/analytics/${endpoint}`)
+  .join(" ");
 
 // Static App Router pages use inline scripts to bootstrap React and its payload.
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}${stayViewScript}`,
+  `script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : stayViewScripts}`,
   "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  `connect-src 'self'${stayViewConnections}`,
+  isDev ? "connect-src 'self'" : `connect-src 'self' ${stayViewConnections}`,
   "object-src 'none'",
   "frame-src 'none'",
   "frame-ancestors 'none'",
