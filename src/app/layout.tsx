@@ -4,6 +4,7 @@ import { siteConfig } from "@/data/site";
 import { MotionController } from "@/components/MotionController";
 
 const siteTitle = `${siteConfig.name} · Criação de Sites, Landing Pages e Sistemas Web`;
+const latinFont = "/assets/fonts/rethink-sans-latin-wght-normal.woff2";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pt-BR">
       <body>
+        <link rel="preload" href={latinFont} as="font" type="font/woff2" crossOrigin="anonymous" />
         <MotionController />
         {children}
       </body>

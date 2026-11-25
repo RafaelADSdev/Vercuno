@@ -6,7 +6,7 @@
 - `brand/vercuno-cover.png` usa a capa de 1920 × 1080 do kit.
 - `src/app/twitter-image.png` usa o cartão quadrado de 1080 × 1080 do kit.
 - `src/app/icon.png` usa o símbolo principal sobre fundo grafite, redimensionado para 64 × 64.
-- `src/app/fonts/rethink-sans/` contém os arquivos WOFF2 do kit e a licença SIL Open Font License.
+- `src/app/fonts/rethink-sans/` contém a licença SIL Open Font License e os arquivos WOFF2 do kit. O subconjunto latino normal fica em `assets/fonts/` para pré-carregamento.
 
 ## Portfólio e equipe
 
@@ -25,3 +25,5 @@ As capturas da entrega à Náutica e os retratos vieram da versão anterior do p
 - `team/miguel-leite.webp`: fotografia `miguel-leite.jpg`.
 
 Os ativos da Náutica e da equipe foram convertidos para WebP por `scripts/process-assets.mjs`.
+
+As variações com largura no nome são prévias responsivas em WebP, geradas a partir das capturas acima. As capturas de tamanho original continuam disponíveis nas páginas dos projetos.

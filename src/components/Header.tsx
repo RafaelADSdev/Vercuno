@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { siteConfig, whatsappHref } from "@/data/site";
@@ -88,7 +87,7 @@ export function Header({ section = "home" }: { section?: "home" | "portfolio" })
   return (
     <header className="site-header">
       <Link className="brand" href={isHome ? "#top" : "/"} prefetch={false} aria-label={`${siteConfig.name}, início`}>
-        <Image {...siteConfig.logo} alt="" loading="eager" />
+        <img {...siteConfig.logo} alt="" />
       </Link>
 
       <nav className="desktop-nav" aria-label="Navegação principal">

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss/preflight.css" layer(base);
 @import "./fonts/rethink-sans/rethink-sans.css";
 
 :root {
@@ -244,63 +244,37 @@ a {
   color: var(--violet-pale);
 }
 
-/* Entrada sequencial do hero: só com JS ativo, para o conteúdo
-   permanecer visível sem script. `both` mantém o estado inicial
-   durante o delay e o final após o fim. */
+/* Mantém o conteúdo visível enquanto o título faz a entrada sequencial. */
 @keyframes hero-rise {
   from {
-    opacity: 0;
     transform: translateY(8px);
   }
 }
 
-@keyframes hero-fade {
-  from {
-    opacity: 0;
-  }
-}
-
 .js .hero-eyebrow,
-.js .hero h1 > span {
-  animation: hero-rise 440ms var(--motion-out) both;
-}
-
-.js .hero-eyebrow {
-  animation-delay: 0ms;
+.js .hero h1 > span,
+.js .hero-summary,
+.js .hero-actions {
+  animation: hero-rise 320ms var(--motion-out) both;
 }
 
 .js .hero h1 > span:nth-child(1) {
-  animation-delay: 40ms;
+  animation-delay: 25ms;
 }
 
 .js .hero h1 > span:nth-child(2) {
-  animation-delay: 100ms;
+  animation-delay: 50ms;
 }
 
 .js .hero h1 > span:nth-child(3) {
-  animation-delay: 160ms;
-}
-
-.js .hero-summary,
-.js .hero-actions,
-.js .hero-note,
-.js .hero-proof {
-  animation: hero-fade 360ms var(--motion-out) both;
+  animation-delay: 75ms;
 }
 
 .js .hero-summary {
-  animation-delay: 200ms;
+  animation-delay: 100ms;
 }
 
 .js .hero-actions {
-  animation-delay: 240ms;
-}
-
-.js .hero-note {
-  animation-delay: 280ms;
-}
-
-.js .hero-proof {
   animation-delay: 120ms;
 }
 

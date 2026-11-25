@@ -28,10 +28,13 @@ export type CaseStudy = {
     mobileBefore?: string;
     alt: { desktop: string; mobile?: string };
     dimensions: { desktop: ImageDimensions; mobile?: ImageDimensions };
+    desktopPreviewWidths?: readonly number[];
     caption: { desktop: string; mobile?: string; comparison?: string };
   };
   featured?: boolean;
 };
+
+export const nauticaDesktopPreviewWidths = [480, 750, 1080] as const;
 
 // O ano indica quando o projeto foi registrado em código ou em capturas verificáveis.
 export const cases: readonly CaseStudy[] = [
@@ -63,6 +66,7 @@ export const cases: readonly CaseStudy[] = [
         mobile: "Abertura da página da Náutica Engenharia no celular, com menu compacto e dois botões",
       },
       dimensions: { desktop: { width: 1440, height: 900 }, mobile: { width: 390, height: 844 } },
+      desktopPreviewWidths: nauticaDesktopPreviewWidths,
       caption: {
         desktop: "O menu dá acesso ao pedido de orçamento.",
         mobile: "Os botões de contato e serviços ocupam a largura da tela.",
@@ -101,6 +105,7 @@ export const cases: readonly CaseStudy[] = [
         mobile: "Abertura do site de Caio Leonardi no celular, com título claro sobre fundo azul-marinho e botão de agendamento",
       },
       dimensions: { desktop: { width: 1440, height: 900 }, mobile: { width: 390, height: 844 } },
+      desktopPreviewWidths: [480, 750],
       caption: {
         desktop: "O retrato acompanha a apresentação e o agendamento.",
         mobile: "O botão de agendamento aparece logo abaixo do título.",
@@ -138,6 +143,7 @@ export const cases: readonly CaseStudy[] = [
         mobile: "Retrato de Suzzy Alves acima da apresentação do estúdio no celular",
       },
       dimensions: { desktop: { width: 1440, height: 692 }, mobile: { width: 390, height: 619 } },
+      desktopPreviewWidths: [480, 750],
       caption: {
         desktop: "O retrato divide espaço com a apresentação e os botões.",
         mobile: "Os links de agendamento e portfólio aparecem logo abaixo da apresentação.",

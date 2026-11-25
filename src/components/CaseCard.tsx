@@ -1,19 +1,19 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { caseTypes, type CaseStudy } from "@/lib/cases";
+import { AssetImage } from "./AssetImage";
 import styles from "./CaseCard.module.css";
 
 type Props = { study: CaseStudy; heading?: "h3" | "h4"; light?: boolean; sizes: string };
 
 export function CaseCard({ study, heading: Heading = "h3", light = false, sizes }: Props) {
-  const { alt, desktopAfter, dimensions } = study.images;
+  const { alt, desktopAfter, dimensions, desktopPreviewWidths } = study.images;
 
   return (
     <Link className={styles.card} data-light={light || undefined} href={`/portfolio/${study.slug}`} prefetch={false}>
       <figure className={styles.figure}>
         <div className={styles.preview}>
-          <Image src={desktopAfter} alt={alt.desktop} {...dimensions.desktop} sizes={sizes} />
+          <AssetImage src={desktopAfter} alt={alt.desktop} {...dimensions.desktop} sizes={sizes} webpWidths={desktopPreviewWidths} />
         </div>
         <figcaption className={styles.copy}>
           <span className={styles.meta}>{caseTypes[study.projectType].singular} · {study.sector} · {study.year}</span>

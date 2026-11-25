@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { AssetImage } from "@/components/AssetImage";
 import { Header } from "@/components/Header";
 import { ProjectPortfolio } from "@/components/ProjectPortfolio";
 import { ReviewCarousel } from "@/components/ReviewCarousel";
@@ -9,6 +9,7 @@ import { ServicePackages } from "@/components/ServicePackages";
 import { SiteFooter } from "@/components/SiteFooter";
 import { googleBusinessProfileUrl, googleReviews } from "@/data/reviews";
 import { siteConfig, team, whatsappHref, whatsappNumber } from "@/data/site";
+import { nauticaDesktopPreviewWidths } from "@/lib/cases";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -76,24 +77,28 @@ export default function Home() {
                   <i />
                   <span>nauticaengenharia.vercel.app</span>
                 </div>
-                <Image
+                <AssetImage
                   src="/assets/cases/nautica-after-desktop.webp"
                   alt="Página inicial da Náutica Engenharia em uma tela de computador"
                   width={1440}
                   height={900}
                   loading="eager"
                   fetchPriority="high"
-                  sizes="(max-width: 900px) 90vw, 48vw"
+                  sizes="(max-width: 820px) 82vw, (max-width: 1100px) 39vw, 44vw"
+                  webpWidths={nauticaDesktopPreviewWidths}
                 />
               </div>
               <div className="mobile-frame">
                 <span className="mobile-speaker" aria-hidden="true" />
-                <Image
+                <AssetImage
                   src="/assets/cases/nautica-after-mobile.webp"
                   alt="Página da Náutica Engenharia adaptada para celular"
                   width={390}
                   height={844}
-                  sizes="(max-width: 640px) 24vw, 10vw"
+                  loading="eager"
+                  fetchPriority="low"
+                  sizes="(max-width: 820px) 24vw, 11vw"
+                  webpWidths={[160, 256]}
                 />
               </div>
               <div className="board-note">
@@ -112,7 +117,7 @@ export default function Home() {
 
         <ServicePackages />
         <ProjectPortfolio />
-        <ReviewCarousel reviews={googleReviews} profileUrl={googleBusinessProfileUrl} />
+        {googleReviews.length > 0 && <ReviewCarousel reviews={googleReviews} profileUrl={googleBusinessProfileUrl} />}
 
         <section className="section team-section" id="equipe" aria-labelledby="team-title">
           <div className="team-heading">
@@ -124,7 +129,7 @@ export default function Home() {
             {team.map((member) => (
               <article key={member.name}>
                 <div className="portrait">
-                  <Image
+                  <AssetImage
                     src={member.image}
                     alt={`Retrato de ${member.name}`}
                     width={900}

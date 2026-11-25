@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
@@ -10,7 +9,7 @@ export function SiteFooter({ home = false }: { home?: boolean }) {
     <footer className="site-footer">
       <div className="footer-top">
         <Link className="brand footer-brand" href={home ? "#top" : "/"} prefetch={false} aria-label={`${siteConfig.name}, início`}>
-          <Image {...siteConfig.logo} alt="" />
+          <img {...siteConfig.logo} alt="" loading="lazy" />
         </Link>
         <p>Design e desenvolvimento de sites e sistemas web.</p>
         <ScrollLink className="arrow-link" href={home ? "#top" : "#conteudo"} focusId="conteudo">
