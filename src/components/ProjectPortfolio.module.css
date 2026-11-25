@@ -28,7 +28,6 @@
   min-width: 0;
 }
 .group[data-wide] { grid-column: span 2; }
-.group[data-category="sistema-web"] { grid-column: 1 / -1; }
 .groupTitle { margin: 0 0 .8rem; padding-top: .65rem; border-top: 1px solid rgb(20 20 20 / 24%); color: var(--violet-deep); font-size: .85rem; font-weight: 750; }
 .projects { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.1rem var(--project-column-gap); margin: 0; padding: 0; list-style: none; }
 .projects > li { display: grid; min-width: 0; }
@@ -36,5 +35,5 @@
 
 @media (max-width: 780px) {
   .groups, .group[data-wide] .projects { grid-template-columns: minmax(0, 1fr); }
-  .group[data-wide], .group[data-category="sistema-web"] { grid-column: auto; }
+  .group[data-wide] { grid-column: auto; }
 }

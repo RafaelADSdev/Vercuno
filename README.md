@@ -12,13 +12,14 @@
 | --- | --- | --- |
 | ![Página de serviços da Náutica Engenharia](public/assets/cases/nautica-after-desktop.webp) | ![Página de apresentação do estúdio Suzzy Alves Fotografia](public/assets/cases/suzzy-desktop.webp) | ![Visão geral do painel financeiro do Prumo](public/assets/cases/prumo-desktop.webp) |
 
-O catálogo em `/portfolio` reúne cinco casos. Ao trocar de serviço, os cards entram e saem com transições curtas e se reposicionam na grade. A troca por teclado ou com movimento reduzido é imediata. O case da Náutica traz um comparador antes e depois com capturas reais em desktop e mobile.
+O catálogo em `/portfolio` reúne seis casos. Ao trocar de serviço, os cards entram e saem com transições curtas e se reposicionam na grade. A troca por teclado ou com movimento reduzido é imediata. O case da Náutica traz um comparador antes e depois com capturas reais em desktop e mobile.
 
 | Projeto | Entrega | Página |
 | --- | --- | --- |
 | **Náutica Engenharia** | Landing page de serviços de engenharia com solicitação de orçamento pelo WhatsApp. | `/portfolio/nautica-engenharia` |
 | **Caio Leonardi** | Site de psicologia clínica com informações sobre atendimento online e agendamento. | `/portfolio/caio-leonardi` |
 | **Suzzy Alves Fotografia** | Site do estúdio com galeria de ensaios e agendamento pelo WhatsApp. | `/portfolio/suzzy-alves-fotografia` |
+| **Marly Cestas e Flores** | Site catálogo de buquês, cestas e presentes com pedidos pelo WhatsApp. | `/portfolio/marly-cestas-e-flores` |
 | **Zelo** | Painel de atendimento pelo WhatsApp com catálogo, assistente de IA e revisão de campanhas. | `/portfolio/zelo` |
 | **Prumo** | Sistema financeiro para acompanhar recebimentos, pagamentos, serviços e despesas recorrentes. | `/portfolio/prumo` |
 

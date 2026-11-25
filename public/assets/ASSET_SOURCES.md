@@ -18,6 +18,7 @@ As capturas da entrega à Náutica e os retratos vieram da versão anterior do p
 - `cases/nautica-before-mobile.webp`: captura do site anterior em https://www.nauticaengenharia.com/ (390×844), feita em 25 set. 2026.
 - `cases/caio-leonardi-after-desktop.webp` e `cases/caio-leonardi-after-mobile.webp`: capturas da abertura do site publicado de [Caio Leonardi](https://psicologocaio.vercel.app/), feitas em 16 nov. 2026 com Playwright, em 1440 × 900 e 390 × 844, e convertidas para WebP com qualidade 80.
 - `cases/suzzy-desktop.webp` e `cases/suzzy-mobile.webp`: capturas da abertura do site publicado da [Suzzy Alves Fotografia](https://fotografia-flax.vercel.app/), feitas em 16 nov. 2026.
+- `cases/marly-cestas-e-flores-desktop.webp` e `cases/marly-cestas-e-flores-mobile.webp`: capturas do site publicado da [Marly Cestas e Flores](https://marly.srv1113578.stayx.cloud/), feitas em 24 nov. 2026, em 1440 × 900 e 390 × 844.
 - `cases/zelo-after-desktop.webp` e `cases/zelo-after-mobile.webp`: capturas do painel de conversas publicadas na [documentação do Zelo](https://github.com/RafaelADSdev/Zelo/blob/main/docs/assets/README.md), com dados fictícios e convertidas para WebP.
 - `cases/prumo-desktop.webp`: captura da [visão geral do Prumo](https://github.com/RafaelADSdev/prumo/blob/6b38c3b69d63d8e961dc0ca2096a66ac6c7173b5/docs/images/visao-geral.png), com dados fictícios de teste e convertida para WebP.
 - `team/rafael-arcanjo.webp`: fotografia `rafael-arcanjo.webp`.

@@ -1,6 +1,7 @@
 export const caseTypes = {
   "landing-page": { singular: "Landing page", plural: "Landing pages" },
   "site-institucional": { singular: "Site institucional", plural: "Sites institucionais" },
+  "site-catalogo": { singular: "Site catálogo", plural: "Sites catálogo" },
   "sistema-web": { singular: "Sistema web", plural: "Sistemas web" },
 } as const;
 
@@ -148,6 +149,42 @@ export const cases: readonly CaseStudy[] = [
       caption: {
         desktop: "O retrato divide espaço com a apresentação e os botões.",
         mobile: "Os links de agendamento e portfólio aparecem logo abaixo da apresentação.",
+      },
+    },
+  },
+  {
+    slug: "marly-cestas-e-flores",
+    client: "Marly Cestas e Flores",
+    sector: "Floricultura",
+    projectType: "site-catalogo",
+    year: 2026,
+    liveUrl: "https://marly.srv1113578.stayx.cloud/",
+    summary: "Catálogo de buquês, cestas e presentes em Recife, com busca por produto e pedidos pelo WhatsApp.",
+    challenge: "Facilitar a escolha de um presente com fotos e preços e levar o cliente direto ao pedido.",
+    scope: ["Catálogo de produtos", "Pedidos pelo WhatsApp", "Interface responsiva"],
+    features: [
+      "Filtros para buquês e flores, cestas e cafés, presentes e itens de Natal",
+      "Busca por nome, fotos e preços no catálogo",
+      "Atalho para encomendar cada produto pelo WhatsApp e informações de localização",
+    ],
+    technicalNotes: [
+      "A busca e os filtros atualizam a lista na própria página.",
+      "Cada item abre o WhatsApp com uma mensagem que identifica o produto.",
+    ],
+    stack: ["Astro"],
+    evidenceNote: "As capturas mostram a abertura do catálogo publicado em computador e celular.",
+    images: {
+      desktopAfter: "/assets/cases/marly-cestas-e-flores-desktop.webp",
+      mobileAfter: "/assets/cases/marly-cestas-e-flores-mobile.webp",
+      alt: {
+        desktop: "Site da Marly com fotos de buquês ao lado da apresentação e do botão Explorar catálogo",
+        mobile: "Site da Marly no celular com o botão Explorar catálogo acima das fotos de buquês",
+      },
+      dimensions: { desktop: { width: 1440, height: 900 }, mobile: { width: 390, height: 844 } },
+      desktopPreviewWidths: [480, 750],
+      caption: {
+        desktop: "As fotos dos buquês acompanham o acesso ao catálogo na abertura.",
+        mobile: "O botão Explorar catálogo aparece logo abaixo da apresentação.",
       },
     },
   },

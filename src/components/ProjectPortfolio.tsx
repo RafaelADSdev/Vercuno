@@ -19,15 +19,12 @@ export function ProjectPortfolio() {
         <div className={styles.groups}>
           {groups.map((group) => (
             <section key={group.type} className={styles.group} data-wide={group.cases.length > 1 || undefined}
-              data-category={group.type}
               aria-labelledby={`portfolio-${group.type}`}>
               <h3 className={styles.groupTitle} id={`portfolio-${group.type}`} data-motion-reveal>{group.label}</h3>
               <ul className={styles.projects} role="list">
                 {group.cases.map((study) => (
                   <li key={study.slug} data-motion-reveal>
-                    <CaseCard study={study} heading="h4" light sizes={group.type === "sistema-web"
-                      ? "(max-width: 780px) 90vw, (max-width: 1520px) 45vw, 690px"
-                      : "(max-width: 780px) 90vw, (max-width: 1520px) 29vw, 445px"} />
+                    <CaseCard study={study} heading="h4" light sizes="(max-width: 780px) 90vw, (max-width: 1520px) 29vw, 445px" />
                   </li>
                 ))}
               </ul>
