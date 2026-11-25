@@ -2,7 +2,7 @@
 
 ![Capa da Vercuno com a marca em branco e violeta sobre fundo grafite](public/assets/brand/vercuno-cover.png)
 
-**Landing pages, sites institucionais e sistemas web.** O site da Vercuno apresenta os serviços, mostra o que foi entregue em cada projeto e abre uma conversa direta pelo WhatsApp.
+**Landing pages, sites institucionais, sites catálogo e sistemas web.** O site da Vercuno apresenta os serviços, mostra o que foi entregue em cada projeto e abre uma conversa direta pelo WhatsApp.
 
 [Projetos](#projetos) · [Desenvolvimento](#desenvolvimento) · [Configuração](#configuração) · [Onde editar](#onde-editar)
 
@@ -49,7 +49,7 @@ O site usa **Next.js 16 com App Router**, **React 19** e **TypeScript**. A inter
 | Rota | O que você encontra |
 | --- | --- |
 | `/` | Serviços, projetos em destaque, equipe e contato. |
-| `/servicos/<servico>` | Escopo, opções de contratação e projetos relacionados. Slugs `landing-pages`, `sites-institucionais` e `sistemas-web`. |
+| `/servicos/<servico>` | Escopo, opções de contratação e projetos relacionados. Slugs `landing-pages`, `sites-institucionais`, `sites-catalogo` e `sistemas-web`. |
 | `/portfolio` e `/portfolio/<projeto>` | Catálogo por serviço e detalhes de cada entrega. |
 | `/privacidade` | Política de privacidade. |
 | `POST /api/leads` | Validação e registro de leads no Supabase. |

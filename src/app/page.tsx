@@ -51,7 +51,7 @@ export default function Home() {
               <span>sob medida.</span>
             </h1>
             <p className="hero-summary">
-              Landing pages, sites institucionais e sistemas web com design e código próprios.
+              Landing pages, sites institucionais, sites catálogo e sistemas web com design e código próprios.
             </p>
             <div className="hero-actions">
               <a className="primary-button" href={whatsappHref ?? "#contato"}

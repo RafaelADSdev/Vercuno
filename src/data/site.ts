@@ -7,7 +7,7 @@ export const siteConfig = {
   email: "contato@vercuno.com.br",
   logo: { src: "/assets/brand/vercuno.svg", width: 527, height: 103 },
   description:
-    "A Vercuno cria landing pages, sites institucionais e sistemas web sob medida. Conheça os projetos e fale com a equipe pelo WhatsApp.",
+    "A Vercuno cria landing pages, sites institucionais, sites catálogo e sistemas web sob medida. Conheça os projetos e fale com a equipe pelo WhatsApp.",
   productionUrl,
   url: productionUrl || "http://localhost:3000",
   nav: [
@@ -47,6 +47,21 @@ export const services = [
     ],
     whatsappMessage:
       `Olá! Vim pelo site da ${siteName} e quero conversar sobre um site institucional.`,
+  },
+  {
+    slug: "sites-catalogo",
+    projectType: "site-catalogo",
+    title: "Sites catálogo",
+    searchTitle: "Criação de sites catálogo",
+    description: "Seus produtos em um catálogo online, com pedidos pelo WhatsApp.",
+    details: "Organizamos seus produtos por categoria, com fotos, preços e busca para facilitar a escolha. O site funciona bem no celular e cada produto pode abrir uma conversa no WhatsApp com o item já indicado.",
+    deliverables: [
+      "Catálogo com fotos e preços",
+      "Busca e filtros de produtos",
+      "Pedidos pelo WhatsApp",
+    ],
+    whatsappMessage:
+      `Olá! Vim pelo site da ${siteName} e quero conversar sobre um site catálogo.`,
   },
   {
     slug: "sistemas-web",
